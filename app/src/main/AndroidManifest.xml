@@ -12,25 +12,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nauraorbit">
         <activity
-            android:name="pertemuan_3.GreetingActivity" />
+            android:name="pertemuan_4.Custom2Activity"
+            android:exported="false" />
+        <activity
+            android:name="pertemuan_4.Custom1Activity"
+            android:exported="false" />
+        <activity
+            android:name="pertemuan_4.BangunRuangActivity"
+            android:exported="false" />
+
+        <activity android:name="pertemuan_3.GreetingActivity" />
         <activity
             android:name="pertemuan_3.LoginActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
 
+        </activity>
         <activity
             android:name="pertemuan_2.pertemuan_2"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"

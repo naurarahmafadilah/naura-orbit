@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.naura_orbit.MainActivity
 import com.example.naura_orbit.R
 import com.example.naura_orbit.databinding.ActivityLoginBinding
 
@@ -33,9 +34,8 @@ class LoginActivity : AppCompatActivity() {
 
             if (username.isNotEmpty() && password.isNotEmpty()) {
 
-                val intent = Intent(this, GreetingActivity::class.java)
-                intent.putExtra("USERNAME", username)
-                startActivity(intent)
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
 
             } else {
                 binding.etUsername.error = "Username wajib diisi"
