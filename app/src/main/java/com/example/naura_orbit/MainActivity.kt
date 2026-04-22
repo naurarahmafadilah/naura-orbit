@@ -1,74 +1,76 @@
 package com.example.naura_orbit
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import pertemuan_3.LoginActivity
-import pertemuan_4.BangunRuangActivity
-import pertemuan_4.Custom1Activity
-import pertemuan_4.Custom2Activity
+import com.example.naura_orbit.pertemuan_3.LoginActivity
+import com.example.naura_orbit.pertemuan_4.BangunRuangActivity
+import com.example.naura_orbit.pertemuan_4.Custom2Activity
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        // Handle padding (edge-to-edge)
+        // 🔹 SharedPreferences
+        sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+
+        // 🔹 Edge-to-edge
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // 🔹 Ambil komponen dari XML
+        // 🔹 Toolbar (WAJIB DOSEN)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        // 🔹 Button
         val btnBangun = findViewById<Button>(R.id.btnBangun)
-        val btnCustom1 = findViewById<Button>(R.id.btnCustom1)
+        val btnBinaDesa = findViewById<Button>(R.id.btnBinaDesa)
         val btnCustom2 = findViewById<Button>(R.id.btnCustom2)
         val btnLogout = findViewById<Button>(R.id.btnLogout)
 
-        // 🔹 Intent ke Bangun Ruang
+        // 🔹 Bangun Ruang
         btnBangun.setOnClickListener {
-            val intent = Intent(this, BangunRuangActivity::class.java)
-            intent.putExtra("judul", "Bangun Ruang")
-            intent.putExtra("desc", "Halaman menghitung bangun ruang")
-            startActivity(intent)
+            startActivity(Intent(this, BangunRuangActivity::class.java))
         }
 
-        // 🔹 Intent ke Custom 1
-        btnCustom1.setOnClickListener {
-            val intent = Intent(this, Custom1Activity::class.java)
-            intent.putExtra("judul", "Custom 1")
-            intent.putExtra("desc", "Halaman custom pertama")
-            startActivity(intent)
+        // 🌐 🔥 BINA DESA → WEBVIEW
+        btnBinaDesa.setOnClickListener {
+            startActivity(Intent(this, WebViewActivity::class.java))
         }
 
-        // 🔹 Intent ke Custom 2
+        // 🔹 Custom 2
         btnCustom2.setOnClickListener {
-            val intent = Intent(this, Custom2Activity::class.java)
-            intent.putExtra("judul", "Custom 2")
-            intent.putExtra("desc", "Halaman custom kedua")
-            startActivity(intent)
+            startActivity(Intent(this, Custom2Activity::class.java))
         }
 
-        // 🔴 Logout (WAJIB: AlertDialog + Snackbar)
+        // 🔴 LOGOUT
         btnLogout.setOnClickListener {
 
             MaterialAlertDialogBuilder(this)
                 .setTitle("Konfirmasi Logout")
                 .setMessage("Apakah Anda yakin ingin logout?")
                 .setPositiveButton("Ya") { dialog, _ ->
-                    dialog.dismiss()
 
-                    val intent = Intent(this, LoginActivity::class.java)
-                    startActivity(intent)
+                    // 🔥 Hapus session login
+                    sharedPref.edit().clear().apply()
+
+                    startActivity(Intent(this, LoginActivity::class.java))
                     finish()
                 }
                 .setNegativeButton("Tidak") { dialog, _ ->

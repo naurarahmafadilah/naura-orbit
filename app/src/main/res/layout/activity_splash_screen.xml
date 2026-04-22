@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_splash">
+
+    <!-- CONTENT -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- LOGO -->
+
+        <!-- TITLE -->
+
+        <ImageView
+            android:layout_width="255dp"
+            android:layout_height="212dp"
+            android:src="@drawable/logo_nusadata" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="NUSADATA"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.05"/>
+
+        <!-- TAGLINE -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Sistem Informasi Kependudukan"
+            android:textColor="#E3F2FD"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+
+</FrameLayout>

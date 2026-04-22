@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- SAAT DITEKAN -->
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="#1F3E73"/> <!-- lebih gelap -->
+            <corners android:radius="20dp"/>
+        </shape>
+    </item>
+
+    <!-- DEFAULT -->
+    <item>
+        <shape>
+            <solid android:color="#2F5DA9"/> <!-- warna utama -->
+            <corners android:radius="20dp"/>
+        </shape>
+    </item>
+
+</selector>

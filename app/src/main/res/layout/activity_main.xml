@@ -3,15 +3,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DAEEFD">
+    android:background="@color/card">
 
     <!-- Judul -->
-
-    <!-- CONTAINER GRID -->
     <TextView
         android:id="@+id/tvJudul"
         android:layout_width="wrap_content"
@@ -19,31 +16,31 @@
         android:layout_marginTop="72dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Dashboard"
-        android:textColor="#0B156B"
+        android:textColor="@color/primary"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- GRID MENU -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/gridMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvJudul"
+        app:layout_constraintBottom_toTopOf="@id/btnLogout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <!-- CARD 1 -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardBangun"
             android:layout_width="140dp"
             android:layout_height="140dp"
-            app:cardBackgroundColor="#3E97FF"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/primary"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -51,70 +48,71 @@
                 android:id="@+id/btnBangun"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:backgroundTint="#3E97FF"
+                android:background="@android:color/transparent"
                 android:text="Bangun"
-                android:textColor="#FFFFFF" />
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- CARD 2 -->
+        <!-- CARD 2 (BINA DESA) -->
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardCustom1"
+            android:id="@+id/cardBinaDesa"
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_marginStart="16dp"
-            app:cardBackgroundColor="#3E97FF"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/primary"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
             app:layout_constraintStart_toEndOf="@id/cardBangun"
             app:layout_constraintTop_toTopOf="@id/cardBangun">
 
             <Button
-                android:id="@+id/btnCustom1"
+                android:id="@+id/btnBinaDesa"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:backgroundTint="#3E97FF"
-                android:text="Custom 1"
-                android:textColor="#FFFFFF" />
+                android:background="@android:color/transparent"
+                android:text="Bina Desa"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- CARD 3 (CENTER BAWAH) -->
+        <!-- CARD 3 -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardCustom2"
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_marginTop="16dp"
-            app:cardBackgroundColor="#3E97FF"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:cardBackgroundColor="@color/primary"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+            app:layout_constraintTop_toBottomOf="@id/cardBangun"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardBangun">
+            app:layout_constraintEnd_toEndOf="parent">
 
             <Button
                 android:id="@+id/btnCustom2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:backgroundTint="#3E97FF"
+                android:background="@android:color/transparent"
                 android:text="Custom 2"
-                android:textColor="#FFFFFF" />
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Logout -->
+    <!-- LOGOUT -->
     <Button
         android:id="@+id/btnLogout"
-        android:layout_width="257dp"
-        android:layout_height="64dp"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
         android:layout_margin="20dp"
-        android:backgroundTint="#FF6B6B"
+        android:backgroundTint="#D32F2F"
         android:text="Logout"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.862" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
