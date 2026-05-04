@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:background="#EEF2FF"
     android:padding="24dp"
-    tools:context=".pertemuan_2.pertemuan_2">
+    tools:context=".Home.pertemuan_2.pertemuan_2">
 
     <!-- Card Container -->
 

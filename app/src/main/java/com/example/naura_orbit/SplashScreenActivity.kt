@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import com.example.naura_orbit.Home.pertemuan_3.LoginActivity
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class SplashScreenActivity : AppCompatActivity() {
             if (isLogin) {
                 startActivity(Intent(this, MainActivity::class.java))
             } else {
-                startActivity(Intent(this, com.example.naura_orbit.pertemuan_3.LoginActivity::class.java))
+                startActivity(Intent(this, LoginActivity::class.java))
             }
 
             finish()

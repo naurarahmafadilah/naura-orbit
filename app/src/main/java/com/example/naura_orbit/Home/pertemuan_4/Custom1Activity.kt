@@ -1,4 +1,4 @@
-package com.example.naura_orbit.pertemuan_4
+package com.example.naura_orbit.Home.pertemuan_4
 
 import android.os.Bundle
 import android.widget.Button
@@ -9,12 +9,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.naura_orbit.R
 
-class Custom2Activity : AppCompatActivity() {
+class Custom1Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_custom2)
+        setContentView(R.layout.activity_custom1)
 
         // 🔹 Handle padding (edge-to-edge)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -31,7 +31,7 @@ class Custom2Activity : AppCompatActivity() {
         val judul = intent.getStringExtra("judul")
         val desc = intent.getStringExtra("desc")
 
-        // 🔹 Tampilkan ke UI
+        // 🔹 Tampilkan data
         tvJudul.text = judul
         tvDesc.text = desc
 

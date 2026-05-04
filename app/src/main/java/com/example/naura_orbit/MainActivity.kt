@@ -6,14 +6,14 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import com.google.android.material.appbar.MaterialToolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import com.example.naura_orbit.pertemuan_3.LoginActivity
-import com.example.naura_orbit.pertemuan_4.BangunRuangActivity
-import com.example.naura_orbit.pertemuan_4.Custom2Activity
+import com.example.naura_orbit.Home.pertemuan_3.LoginActivity
+import com.example.naura_orbit.Home.pertemuan_4.BangunRuangActivity
+import com.example.naura_orbit.Home.pertemuan_4.Custom2Activity
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,8 +35,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         // 🔹 Toolbar (WAJIB DOSEN)
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        val toolbar = findViewById<MaterialToolbar>(R.id.toolbarDashboard)
         setSupportActionBar(toolbar)
+        supportActionBar?.title = "Dashboard"
 
         // 🔹 Button
         val btnBangun = findViewById<Button>(R.id.btnBangun)

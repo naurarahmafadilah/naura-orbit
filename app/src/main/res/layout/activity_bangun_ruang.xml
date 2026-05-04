@@ -6,17 +6,33 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DAEEFD"
-    android:padding="24dp">
+    android:background="#DAEEFD">
 
-    <!-- JUDUL -->
+    <!-- 🔷 TOOLBAR -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarBangunDatar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="#3E97FF"
+        android:elevation="6dp"
+        android:title="Bangun Ruang"
+        android:titleTextColor="#FFFFFF"
+        app:titleCentered="true"
+        app:navigationIcon="@drawable/ic_back"
+        app:navigationIconTint="#FFFFFF"
 
-    <!-- DESKRIPSI -->
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- 🔷 JUDUL -->
     <TextView
         android:id="@+id/tvJudul"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="24dp"
+
         android:fontFamily="@font/boldonse_regular"
         android:text="Bangun Ruang"
         android:textAlignment="center"
@@ -24,63 +40,42 @@
         android:textSize="26sp"
         android:textStyle="bold"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/toolbarBangunDatar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.114" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- 🔷 DESKRIPSI -->
     <TextView
         android:id="@+id/tvDesc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+
         android:fontFamily="@font/oswald_variablefont_wght"
         android:text="Menghitung Volume Kubus"
         android:textAlignment="center"
-
         android:textColor="#151F61"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+
+        app:layout_constraintTop_toBottomOf="@id/tvJudul"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvJudul" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- CARD UTAMA -->
-
-    <Button
-        android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-
-        android:backgroundTint="#FF6B6B"
-        android:text="Kembali"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.82" />
-
+    <!-- 🔷 CARD -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         android:layout_marginHorizontal="16dp"
+
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="20dp"
-
         app:cardElevation="8dp"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDesc"
+        app:layout_constraintBottom_toTopOf="@id/btnBack"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp">
 
-        <!-- ISI CARD -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="264dp"
@@ -90,35 +85,34 @@
 
             <!-- RUMUS -->
             <TextView
-                android:layout_width="111dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="@font/poppins_bold"
                 android:text="V = s × s × s"
                 android:textColor="#0B156B"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp" />
 
             <!-- INPUT -->
             <EditText
                 android:id="@+id/inputSisi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@android:drawable/edit_text"
                 android:hint="Masukkan sisi kubus"
                 android:inputType="numberDecimal"
-                android:padding="12dp" />
+                android:padding="12dp"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginBottom="16dp" />
 
             <!-- BUTTON -->
             <Button
                 android:id="@+id/btnHitung"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:backgroundTint="#3E97FF"
                 android:text="Hitung Volume"
-                android:textColor="#FFFFFF" />
+                android:backgroundTint="#3E97FF"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="16dp" />
 
             <!-- HASIL -->
             <TextView
@@ -126,7 +120,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hasil:"
-                android:textAlignment="center"
                 android:textColor="#0B156B"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -134,5 +127,20 @@
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
+    <!-- 🔷 BUTTON BACK -->
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+
+        android:backgroundTint="#FF6B6B"
+        android:text="Kembali"
+        android:textColor="#FFFFFF"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

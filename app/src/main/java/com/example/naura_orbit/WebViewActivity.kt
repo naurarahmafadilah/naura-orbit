@@ -25,8 +25,6 @@ class WebViewActivity : AppCompatActivity() {
         binding.webView.webViewClient = WebViewClient()
         binding.webView.settings.javaScriptEnabled = true
         binding.webView.settings.domStorageEnabled = true
-
-        // 🌐 LINK WEBSITE KAMU
         binding.webView.loadUrl("https://naura-kependudukan.alwaysdata.net/")
     }
 
