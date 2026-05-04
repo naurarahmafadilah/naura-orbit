@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nauraorbit">
         <activity
-            android:name=".BaseActivity"
+            android:name=".Home.pertemuan_6.SixthActivity"
             android:exported="false" />
         <activity
             android:name=".AuthActivity"
@@ -39,7 +39,7 @@
             android:exported="false" />
         <activity android:name=".Home.pertemuan_3.GreetingActivity" />
         <activity
-            android:name=".Home.pertemuan_6.SixthActivity"
+            android:name=".pertemuan_6.BaseActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

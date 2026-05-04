@@ -1,145 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/card">
+    android:background="@color/white">
 
-    <!-- 🔷 TOOLBAR -->
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbarDashboard"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:background="@color/primary"
-        android:elevation="6dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:background="@color/primary_light">
 
-        android:title="Dashboard"
-        android:titleTextColor="@color/white"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
-        app:titleCentered="false"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_home"
+                    app:tint="@color/primary" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/montserrat_black"
+                    android:text="NusaData"
+                    android:textColor="@color/primary"
+                    android:textSize="22sp" />
+            </LinearLayout>
 
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/white">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:src="@android:drawable/ic_menu_search"
+                    app:tint="@color/primary" />
+            </com.google.android.material.card.MaterialCardView>
+        </RelativeLayout>
 
-    <!-- 🔷 JUDUL -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Selamat Datang,"
+            android:textColor="@color/primary_dark"
+            android:textSize="16sp" />
 
-    <!-- 🔷 GRID MENU -->
-    <TextView
-        android:id="@+id/tvJudul"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Dashboard"
-        android:textColor="@color/primary"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_black"
+            android:text="Warga Nusa"
+            android:textColor="@color/primary_dark"
+            android:textSize="28sp" />
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarDashboard"
-        app:layout_constraintVertical_bias="0.065" />
+    </LinearLayout>
 
-    <!-- 🔷 LOGOUT -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/gridMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="220dp"
+        android:background="@drawable/bg_rounded_canvas"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        app:layout_constraintBottom_toTopOf="@id/btnLogout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvJudul"
-        app:layout_constraintVertical_bias="0.279">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
 
-        <!-- CARD 1 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardBangun"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            app:cardBackgroundColor="@color/primary"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            <View
+                android:layout_width="40dp"
+                android:layout_height="4dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="32dp"
+                android:background="@color/divider" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_black"
+                android:text="Dashboard Layanan"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:columnCount="2"
+                android:alignmentMode="alignMargins">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardBangun"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@color/primary"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="6dp">
+
+                    <Button
+                        android:id="@+id/btnBangun"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:text="Bangun"
+                        android:textAllCaps="false"
+                        android:fontFamily="@font/montserrat_black"
+                        android:textColor="@color/white" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardBinaDesa"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@color/primary"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="6dp">
+
+                    <Button
+                        android:id="@+id/btnBinaDesa"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:text="Bina Desa"
+                        android:textAllCaps="false"
+                        android:fontFamily="@font/montserrat_black"
+                        android:textColor="@color/white" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardCustom2"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@color/primary"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="6dp">
+
+                    <Button
+                        android:id="@+id/btnCustom2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:text="Custom 2"
+                        android:textAllCaps="false"
+                        android:fontFamily="@font/montserrat_black"
+                        android:textColor="@color/white" />
+                </com.google.android.material.card.MaterialCardView>
+
+            </GridLayout>
 
             <Button
-                android:id="@+id/btnBangun"
+                android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:text="Bangun"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="100dp"
+                android:backgroundTint="#D32F2F"
+                android:text="Logout"
+                android:textAllCaps="false"
+                android:fontFamily="@font/montserrat_black"
                 android:textColor="@color/white"
-                android:textStyle="bold" />
-        </com.google.android.material.card.MaterialCardView>
+                app:cornerRadius="16dp" />
 
-        <!-- CARD 2 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardBinaDesa"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_marginStart="16dp"
-            app:cardBackgroundColor="@color/primary"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="10dp"
-            app:layout_constraintStart_toEndOf="@id/cardBangun"
-            app:layout_constraintTop_toTopOf="@id/cardBangun">
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-            <Button
-                android:id="@+id/btnBinaDesa"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:text="Bina Desa"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- CARD 3 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardCustom2"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_marginTop="16dp"
-            app:cardBackgroundColor="@color/primary"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardBangun">
-
-            <Button
-                android:id="@+id/btnCustom2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:text="Custom 2"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-        </com.google.android.material.card.MaterialCardView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_margin="20dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#D32F2F"
-        android:text="Logout"
-        android:textColor="@color/white"
-
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

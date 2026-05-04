@@ -1,60 +1,82 @@
 package com.example.naura_orbit.Home
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.naura_orbit.R
+import com.example.naura_orbit.Home.pertemuan_3.LoginActivity
+import com.example.naura_orbit.Home.pertemuan_4.BangunRuangActivity
+import com.example.naura_orbit.Home.pertemuan_4.Custom2Activity
+import com.example.naura_orbit.WebViewActivity
+import com.example.naura_orbit.databinding.FragmentHomeBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    // 🔹 Inisialisasi View Binding
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        // Memasang layout menggunakan View Binding
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // 🔹 Logika Klik Button Bangun
+        binding.cardBangun.setOnClickListener {
+            startActivity(Intent(requireContext(), BangunRuangActivity::class.java))
+        }
+
+        // 🌐 Logika Klik Button Bina Desa (WebView)
+        binding.cardBinaDesa.setOnClickListener {
+            startActivity(Intent(requireContext(), WebViewActivity::class.java))
+        }
+
+        // 🔹 Logika Klik Button Custom 2
+        binding.cardCustom2.setOnClickListener {
+            startActivity(Intent(requireContext(), Custom2Activity::class.java))
+        }
+
+        // 🔴 Logika Klik Logout
+        binding.btnLogout.setOnClickListener {
+            showLogoutDialog()
+        }
+    }
+
+    private fun showLogoutDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Konfirmasi Logout")
+            .setMessage("Apakah Anda yakin ingin keluar dari aplikasi?")
+            .setPositiveButton("Ya") { _, _ ->
+                // 🔥 Hapus Session SharedPreferences
+                val sharedPref = requireActivity().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+                sharedPref.edit().clear().apply()
+
+                // Pindah ke Login dan hapus tumpukan activity (Backstack)
+                val intent = Intent(requireContext(), LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
             }
+            .setNegativeButton("Tidak") { dialog, _ ->
+                dialog.dismiss()
+                Snackbar.make(binding.root, "Logout dibatalkan", Snackbar.LENGTH_SHORT).show()
+            }
+            .show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null // 🔹 Mencegah memory leak
     }
 }

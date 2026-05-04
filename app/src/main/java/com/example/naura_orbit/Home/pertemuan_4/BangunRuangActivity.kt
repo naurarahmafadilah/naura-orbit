@@ -1,63 +1,75 @@
 package com.example.naura_orbit.Home.pertemuan_4
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.naura_orbit.R
+import com.example.naura_orbit.databinding.ActivityBangunRuangBinding // Nama binding mengikuti nama file XML
+import java.text.DecimalFormat
 
 class BangunRuangActivity : AppCompatActivity() {
+
+    // Inisialisasi binding dengan nama yang sesuai
+    private lateinit var binding: ActivityBangunRuangBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_bangun_ruang)
 
-        // 🔹 Handle padding (edge-to-edge)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        // Inflate layout menggunakan binding
+        binding = ActivityBangunRuangBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setupToolbar()
+        setupLogic()
+    }
+
+    private fun setupToolbar() {
+        // ID toolbar sesuai dengan XML pro yang kita buat tadi (toolbarKubus atau toolbarBangunRuang)
+        setSupportActionBar(binding.toolbarKubus)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        binding.toolbarKubus.setNavigationOnClickListener {
+            finish()
         }
+    }
 
-        // 🔹 Ambil komponen
-        val tvJudul = findViewById<TextView>(R.id.tvJudul)
-        val tvDesc = findViewById<TextView>(R.id.tvDesc)
-        val inputSisi = findViewById<EditText>(R.id.inputSisi)
-        val btnHitung = findViewById<Button>(R.id.btnHitung)
-        val tvHasil = findViewById<TextView>(R.id.tvHasil)
-        val btnBack = findViewById<Button>(R.id.btnBack)
+    private fun setupLogic() {
+        // Ambil data dari Intent
+        val judul = intent.getStringExtra("judul") ?: "Volume Kubus"
+        // binding.tvJudul.text = judul // Sesuaikan ID jika ingin mengubah judul secara dinamis
 
-        // 🔹 Ambil data dari Intent (pakai fallback biar tidak null)
-        val judul = intent.getStringExtra("judul") ?: "Bangun Ruang"
-        val desc = intent.getStringExtra("desc") ?: "Menghitung Volume Kubus"
-
-        tvJudul.text = judul
-        tvDesc.text = desc
-
-        // ✅ Tombol HITUNG
-        btnHitung.setOnClickListener {
-
-            val sisiText = inputSisi.text.toString()
+        binding.btnHitung.setOnClickListener {
+            val sisiText = binding.inputSisi.text.toString()
 
             if (sisiText.isEmpty()) {
-                tvHasil.text = "Masukkan nilai sisi terlebih dahulu!"
+                binding.inputSisi.error = "Nilai sisi tidak boleh kosong"
                 return@setOnClickListener
             }
 
-            val sisi = sisiText.toDouble()
-            val volume = sisi * sisi * sisi
+            try {
+                val sisi = sisiText.toDouble()
 
-            tvHasil.text = "Volume = $volume"
-        }
+                // Menghitung Volume: s pangkat 3
+                val volume = Math.pow(sisi, 3.0)
 
-        // ✅ Tombol KEMBALI
-        btnBack.setOnClickListener {
-            finish()
+                // Mempercantik tampilan angka (maksimal 2 desimal)
+                val df = DecimalFormat("#.##")
+                val hasilFormatted = df.format(volume)
+
+                // Set hasil ke TextView
+                binding.tvHasil.text = hasilFormatted
+
+                // Efek animasi halus saat hasil muncul
+                val anim = AnimationUtils.loadAnimation(this, android.R.anim.fade_in)
+                binding.cardHasil.startAnimation(anim)
+
+            } catch (e: Exception) {
+                Toast.makeText(this, "Masukkan angka yang valid!", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

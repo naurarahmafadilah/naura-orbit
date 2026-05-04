@@ -24,7 +24,7 @@ class pertemuan_2 : AppCompatActivity() {
         setContentView(R.layout.activity_pertemuan2)
 
         // 🔷 TOOLBAR
-        val toolbar = findViewById<MaterialToolbar>(R.id.toolbarBangunDatar)
+        val toolbar = findViewById<MaterialToolbar>(R.id.toolbarKubus)
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Bangun Ruang"
 
