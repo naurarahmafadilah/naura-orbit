@@ -13,21 +13,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nauraorbit">
-        <activity
-            android:name=".Home.pertemuan_6.SixthActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AuthActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SplashScreenActivity"
-            android:exported="false" />
+
         <activity
             android:name=".Home.pertemuan_3.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Home.pertemuan_3.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".WebViewActivity"
+            android:name=".Home.pertemuan_3.VerificationActivity"
             android:exported="false" />
+        <activity
+            android:name=".Home.pertemuan_3.GreetingActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
         <activity
             android:name=".Home.pertemuan_4.Custom2Activity"
             android:exported="false" />
@@ -37,22 +40,20 @@
         <activity
             android:name=".Home.pertemuan_4.BangunRuangActivity"
             android:exported="false" />
-        <activity android:name=".Home.pertemuan_3.GreetingActivity" />
+
         <activity
             android:name=".pertemuan_6.BaseActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Home.pertemuan_2.pertemuan_2"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-    </application>
 
+        <activity android:name=".SplashScreenActivity" android:exported="false" />
+        <activity android:name=".AuthActivity" android:exported="false" />
+        <activity android:name=".WebViewActivity" android:exported="false" />
+        <activity android:name=".Home.pertemuan_2.pertemuan_2" android:exported="true" />
+
+    </application>
 </manifest>

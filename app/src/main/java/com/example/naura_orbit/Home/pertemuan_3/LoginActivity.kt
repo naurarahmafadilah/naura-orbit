@@ -3,10 +3,9 @@ package com.example.naura_orbit.Home.pertemuan_3
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+// Import ini harus tepat mengarah ke package utama
 import com.example.naura_orbit.MainActivity
 import com.example.naura_orbit.databinding.ActivityLoginBinding
 
@@ -17,45 +16,57 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-
-        // 🔹 Binding
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 🔹 SharedPreferences
         sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
 
-        // 🔥 FIX ERROR DI SINI (PAKAI root, BUKAN main)
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        // 1. AUTO LOGIN CHECK
+        if (sharedPref.getBoolean("isLogin", false)) {
+            navigateToDashboard()
         }
 
-        // 🔹 LOGIN BUTTON
         binding.btnLogin.setOnClickListener {
+            val user = binding.etUsername.text.toString().trim()
+            val pass = binding.etPassword.text.toString().trim()
 
-            val username = binding.etUsername.text.toString()
-            val password = binding.etPassword.text.toString()
+            // Ambil data dengan nilai default string kosong "" bukan null
+            val regUser = sharedPref.getString("reg_user", "") ?: ""
+            val regPass = sharedPref.getString("reg_pass", "") ?: ""
 
-            // ✅ SESUAI MODUL (username = password)
-            if (username == password && username.isNotEmpty()) {
-
-                // 🔹 Simpan login
-                val editor = sharedPref.edit()
-                editor.putBoolean("isLogin", true)
-                editor.putString("username", username)
-                editor.apply()
-
-                // 🔹 Pindah ke Main
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
-
-            } else {
-                binding.etUsername.error = "Username salah"
-                binding.etPassword.error = "Password salah"
+            if (user.isEmpty() || pass.isEmpty()) {
+                Toast.makeText(this, "Isi semua field!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+
+            if ((user == pass) || (user == regUser && pass == regPass)) {
+                sharedPref.edit().putBoolean("isLogin", true).apply()
+
+                val intent = Intent(this, com.example.naura_orbit.MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                finish()
+            } else {
+                Toast.makeText(this, "Username/Password Salah", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.tvRegister.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
+    }
+
+    // 3. FUNGSI NAVIGASI (SOLUSI ANTI-GAGAL)
+    private fun navigateToDashboard() {
+        try {
+            // Gunakan class reference secara eksplisit
+            val intent = Intent(this, MainActivity::class.java)
+            // Flag untuk membersihkan riwayat halaman agar tidak bisa 'back' ke Login
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        } catch (e: Exception) {
+            Toast.makeText(this, "Navigasi Error: ${e.message}", Toast.LENGTH_LONG).show()
         }
     }
 }
