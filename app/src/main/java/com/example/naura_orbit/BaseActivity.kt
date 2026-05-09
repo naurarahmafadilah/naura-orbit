@@ -36,6 +36,7 @@ class BaseActivity : AppCompatActivity() {
 
         // 4. Tampilkan Fragment Home secara default
         if (savedInstanceState == null) {
+
             replaceFragment(HomeFragment())
         }
 

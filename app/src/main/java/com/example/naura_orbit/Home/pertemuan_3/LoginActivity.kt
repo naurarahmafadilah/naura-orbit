@@ -5,9 +5,10 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-// Import ini harus tepat mengarah ke package utama
-import com.example.naura_orbit.MainActivity
+// Hapus import MainActivity jika sudah tidak digunakan
+// import com.example.naura_orbit.MainActivity
 import com.example.naura_orbit.databinding.ActivityLoginBinding
+import com.example.naura_orbit.pertemuan_6.BaseActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -30,24 +31,32 @@ class LoginActivity : AppCompatActivity() {
             val user = binding.etUsername.text.toString().trim()
             val pass = binding.etPassword.text.toString().trim()
 
-            // Ambil data dengan nilai default string kosong "" bukan null
-            val regUser = sharedPref.getString("reg_user", "") ?: ""
-            val regPass = sharedPref.getString("reg_pass", "") ?: ""
-
+            // 1. Validasi Input Kosong
             if (user.isEmpty() || pass.isEmpty()) {
                 Toast.makeText(this, "Isi semua field!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if ((user == pass) || (user == regUser && pass == regPass)) {
-                sharedPref.edit().putBoolean("isLogin", true).apply()
+            // 2. Logika Utama: Username harus sama dengan Password
+            // ATAU sesuai dengan data yang didaftarkan di SharedPreferences
+            val regUser = sharedPref.getString("reg_user", "") ?: ""
+            val regPass = sharedPref.getString("reg_pass", "") ?: ""
 
-                val intent = Intent(this, com.example.naura_orbit.MainActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
-                finish()
+            val isSameInput = (user == pass) // Ini logika yang kamu minta
+            val isMatchAccount = (user == regUser && pass == regPass && regUser.isNotEmpty())
+
+            if (isSameInput || isMatchAccount) {
+                // Simpan status login
+                sharedPref.edit().apply {
+                    putBoolean("isLogin", true)
+                    putString("current_user", user)
+                    apply()
+                }
+
+                Toast.makeText(this, "Login Berhasil!", Toast.LENGTH_SHORT).show()
+                navigateToDashboard()
             } else {
-                Toast.makeText(this, "Username/Password Salah", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Username dan Password harus sama!", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -56,17 +65,17 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    // 3. FUNGSI NAVIGASI (SOLUSI ANTI-GAGAL)
+    // 2. FUNGSI NAVIGASI KE DASHBOARD/HOME
     private fun navigateToDashboard() {
         try {
-            // Gunakan class reference secara eksplisit
-            val intent = Intent(this, MainActivity::class.java)
-            // Flag untuk membersihkan riwayat halaman agar tidak bisa 'back' ke Login
+            // Ubah DashboardActivity::class.java dengan nama Activity
+            // yang menampung HomeFragment kamu
+            val intent = Intent(this, BaseActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
         } catch (e: Exception) {
-            Toast.makeText(this, "Navigasi Error: ${e.message}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Gagal pindah halaman: ${e.message}", Toast.LENGTH_LONG).show()
         }
     }
 }

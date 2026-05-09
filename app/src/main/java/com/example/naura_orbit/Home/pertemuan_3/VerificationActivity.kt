@@ -5,7 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+// Hapus import MainActivity karena sudah tidak dipakai
+// import com.example.naura_orbit.MainActivity
 import com.example.naura_orbit.databinding.ActivityVerificationBinding
+import com.example.naura_orbit.pertemuan_6.BaseActivity
 
 class VerificationActivity : AppCompatActivity() {
 
@@ -23,6 +26,7 @@ class VerificationActivity : AppCompatActivity() {
         binding.btnVerify.setOnClickListener {
             val otpInput = binding.etOtp.text.toString().trim()
 
+            // Simulasi OTP (menggunakan nomor HP sebagai kode OTP)
             if (otpInput == phoneFromReg && otpInput.isNotEmpty()) {
 
                 // 1. Simpan Data ke SharedPreferences
@@ -30,28 +34,31 @@ class VerificationActivity : AppCompatActivity() {
                 val editor = sharedPref.edit()
                 editor.putString("reg_user", userFromReg)
                 editor.putString("reg_pass", passFromReg)
-                editor.putString("username", userFromReg) // Agar Dashboard bisa panggil nama user
-                editor.putBoolean("isLogin", true)
-                editor.apply() // Pastikan data tertulis sebelum pindah halaman
+                editor.putString("username", userFromReg)
+                editor.putBoolean("isLogin", true) // Set auto-login jadi true
+                editor.apply()
 
-                // 2. Navigasi ke MainActivity
-                try {
-                    // Gunakan Alamat Lengkap agar tidak "tersesat" antar folder
-                    val intent = Intent(this, com.example.naura_orbit.MainActivity::class.java)
-
-                    // Flags ini wajib agar saat di Dashboard, user tidak bisa Back ke OTP
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-
-                    startActivity(intent)
-                    finish()
-                } catch (e: Exception) {
-                    // Jika crash, ini akan memberitahu nama errornya di layar
-                    Toast.makeText(this, "Error Navigasi: ${e.message}", Toast.LENGTH_LONG).show()
-                }
+                // 2. Navigasi ke Dashboard/Home (Bukan MainActivity)
+                navigateToDashboard()
 
             } else {
-                Toast.makeText(this, "OTP Salah! Coba masukkan: $phoneFromReg", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "OTP Salah! Masukkan: $phoneFromReg", Toast.LENGTH_LONG).show()
             }
+        }
+    }
+
+    private fun navigateToDashboard() {
+        try {
+            // GANTI DashboardActivity dengan Activity yang menampung HomeFragment kamu
+            val intent = Intent(this, BaseActivity::class.java)
+
+            // Flags untuk menghapus history agar tidak bisa back ke halaman Verifikasi
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+
+            startActivity(intent)
+            finish()
+        } catch (e: Exception) {
+            Toast.makeText(this, "Error Navigasi: ${e.message}", Toast.LENGTH_LONG).show()
         }
     }
 }
