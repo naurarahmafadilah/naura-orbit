@@ -1,12 +1,11 @@
 package com.example.naura_orbit.Home.pertemuan_3
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-// Hapus import MainActivity jika sudah tidak digunakan
-// import com.example.naura_orbit.MainActivity
 import com.example.naura_orbit.databinding.ActivityLoginBinding
 import com.example.naura_orbit.pertemuan_6.BaseActivity
 
@@ -17,65 +16,73 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // 1. Inisialisasi View Binding
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+        // 2. Inisialisasi SharedPreferences (Gunakan nama yang sama dengan SplashScreen)
+        sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
 
-        // 1. AUTO LOGIN CHECK
+        // Cek jika sudah login sebelumnya (Auto Login)
         if (sharedPref.getBoolean("isLogin", false)) {
-            navigateToDashboard()
+            navigateToBase()
         }
 
         binding.btnLogin.setOnClickListener {
             val user = binding.etUsername.text.toString().trim()
             val pass = binding.etPassword.text.toString().trim()
 
-            // 1. Validasi Input Kosong
+            // 3. Validasi Input
             if (user.isEmpty() || pass.isEmpty()) {
-                Toast.makeText(this, "Isi semua field!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Harap isi semua kolom!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // 2. Logika Utama: Username harus sama dengan Password
-            // ATAU sesuai dengan data yang didaftarkan di SharedPreferences
+            // 4. Ambil data dari Register (Jika ada)
             val regUser = sharedPref.getString("reg_user", "") ?: ""
             val regPass = sharedPref.getString("reg_pass", "") ?: ""
 
-            val isSameInput = (user == pass) // Ini logika yang kamu minta
+            // 5. Logika Login: Username == Password ATAU Sesuai Register
+            val isSameInput = (user == pass)
             val isMatchAccount = (user == regUser && pass == regPass && regUser.isNotEmpty())
 
             if (isSameInput || isMatchAccount) {
-                // Simpan status login
-                sharedPref.edit().apply {
-                    putBoolean("isLogin", true)
-                    putString("current_user", user)
-                    apply()
-                }
-
-                Toast.makeText(this, "Login Berhasil!", Toast.LENGTH_SHORT).show()
-                navigateToDashboard()
+                saveLoginSession(user)
             } else {
-                Toast.makeText(this, "Username dan Password harus sama!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Login Gagal! Akun tidak sesuai.", Toast.LENGTH_SHORT).show()
             }
         }
 
+        // Tombol ke Register
         binding.tvRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 
-    // 2. FUNGSI NAVIGASI KE DASHBOARD/HOME
-    private fun navigateToDashboard() {
+    private fun saveLoginSession(username: String) {
+        // Simpan status isLogin = true agar Splash Screen langsung ke Home nantinya
+        sharedPref.edit().apply {
+            putBoolean("isLogin", true)
+            putString("current_user", username)
+            apply()
+        }
+
+        Toast.makeText(this, "Login Berhasil, Halo $username!", Toast.LENGTH_SHORT).show()
+        navigateToBase()
+    }
+
+    private fun navigateToBase() {
         try {
-            // Ubah DashboardActivity::class.java dengan nama Activity
-            // yang menampung HomeFragment kamu
+            // Kita pindah ke BaseActivity (bukan HomeFragment langsung)
+            // Karena BaseActivity yang memegang Bottom Navigation dan Container Fragment
             val intent = Intent(this, BaseActivity::class.java)
+
+            // Hapus tumpukan Activity agar tidak bisa klik 'Back' ke halaman Login
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
         } catch (e: Exception) {
-            Toast.makeText(this, "Gagal pindah halaman: ${e.message}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Terjadi kesalahan navigasi", Toast.LENGTH_SHORT).show()
         }
     }
 }

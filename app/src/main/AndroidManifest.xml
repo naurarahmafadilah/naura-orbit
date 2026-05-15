@@ -15,13 +15,18 @@
         android:theme="@style/Theme.Nauraorbit">
 
         <activity
-            android:name=".Home.pertemuan_3.LoginActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".Home.pertemuan_3.LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".Home.pertemuan_3.RegisterActivity"
@@ -32,18 +37,21 @@
             android:exported="false" />
 
         <activity
-            android:name=".pertemuan_6.BaseActivity"
+            android:name=".Home.pertemuan_3.GreetingActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".pertemuan_6.BaseActivity"
+            android:exported="false"
+            android:label="Nusa Data" />
 
         <activity
             android:name=".MainActivity"
             android:exported="false" />
 
-        <activity android:name=".Home.pertemuan_3.GreetingActivity" android:exported="false" />
         <activity android:name=".Home.pertemuan_4.Custom2Activity" android:exported="false" />
         <activity android:name=".Home.pertemuan_4.Custom1Activity" android:exported="false" />
         <activity android:name=".Home.pertemuan_4.BangunRuangActivity" android:exported="false" />
-        <activity android:name=".SplashScreenActivity" android:exported="false" />
         <activity android:name=".AuthActivity" android:exported="false" />
         <activity android:name=".WebViewActivity" android:exported="false" />
         <activity android:name=".Home.pertemuan_2.pertemuan_2" android:exported="false" />

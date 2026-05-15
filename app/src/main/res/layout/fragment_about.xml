@@ -4,58 +4,59 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="#F8FAFF">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="300dp"
         android:background="@android:color/transparent"
         app:elevation="0dp">
 
-        <RelativeLayout
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/img_desa_full"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/desa"
-                android:scaleType="centerCrop"
-                android:alpha="0.8" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#4D000000" />
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleEnabled="false">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:layout_marginTop="10dp">
-
-                <LinearLayout
+                android:layout_height="match_parent"
+                app:layout_collapseMode="parallax">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/desa" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#801F3E73" />
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:src="@drawable/logo_nusadata"
-                        app:tint="@color/white" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:fontFamily="@font/montserrat_black"
-                        android:text="NusaData"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
-                </LinearLayout>
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Tentang Kami"
+                    android:textColor="@color/white"
+                    android:textSize="28sp" />
             </RelativeLayout>
-        </RelativeLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:contentInsetStart="0dp">
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/bg_circle_white_alpha"
+                    android:src="@android:drawable/ic_menu_revert"
+                    android:rotation="180"
+                    app:tint="#1F3E73" />
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -63,207 +64,134 @@
         android:layout_height="match_parent"
         android:layout_marginTop="-40dp"
         android:background="@drawable/bg_rounded_canvas"
-        android:fillViewport="true"
-        android:clipToPadding="false"
-        android:paddingBottom="100dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
-
-            <View
-                android:layout_width="40dp"
-                android:layout_height="4dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="24dp"
-                android:background="@color/divider" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_black"
-                android:text="Tentang NusaData"
-                android:textColor="@color/primary_dark"
-                android:textSize="26sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Sistem Informasi Kependudukan Digital Desa"
-                android:textColor="@color/primary"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:lineSpacingExtra="6dp"
-                android:text="NusaData hadir sebagai jembatan transformasi digital bagi pemerintah desa di Indonesia. Kami berkomitmen untuk mewujudkan tata kelola data yang modern demi pelayanan publik yang prima."
-                android:textColor="@color/text_primary"
-                android:textSize="15sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:fontFamily="@font/montserrat_black"
-                android:text="Visi &amp; Misi"
-                android:textColor="@color/primary_dark"
-                android:textSize="18sp" />
+            android:padding="28dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="24dp">
+                <ImageView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/logo_nusadata" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="• Mewujudkan integrasi data desa nasional."
-                    android:textColor="@color/text_secondary"
-                    android:textSize="14sp"
-                    android:paddingBottom="4dp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="• Mempercepat pelayanan administrasi warga."
-                    android:textColor="@color/text_secondary"
-                    android:textSize="14sp"
-                    android:paddingBottom="4dp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="• Menjamin transparansi dan keamanan data."
-                    android:textColor="@color/text_secondary"
-                    android:textSize="14sp"/>
+                    android:orientation="vertical"
+                    android:layout_marginStart="14dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Nusa Data"
+                        android:textColor="#1F3E73"
+                        android:textSize="22sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Bina Desa Digital"
+                        android:textColor="#2F5DA9"
+                        android:textSize="12sp"
+                        android:layout_marginTop="-4dp"/>
+                </LinearLayout>
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:fontFamily="@font/montserrat_black"
-                android:text="Fitur Unggulan"
-                android:textColor="@color/primary_dark"
+                android:fontFamily="@font/poppins_regular"
+                android:lineSpacingExtra="7dp"
+                android:text="Nusa Data merupakan program pengembangan masyarakat yang berfokus pada peningkatan kesejahteraan warga desa melalui edukasi, inovasi, dan kolaborasi antara pemerintah, masyarakat, serta mahasiswa. Program ini menjadi wujud nyata kontribusi akademik terhadap pembangunan berkelanjutan di tingkat desa."
+                android:textColor="#455A64"
+                android:textSize="14sp" />
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F0F0F0" android:layout_marginVertical="28dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Tujuan Utama Program"
+                android:textColor="#1F3E73"
                 android:textSize="18sp" />
 
-            <GridLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:columnCount="2">
+                android:orientation="vertical">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="✓ Meningkatkan kapasitas masyarakat dalam mengelola potensi lokal." android:fontFamily="@font/poppins_medium" android:textColor="#2F5DA9" android:paddingBottom="8dp" android:textSize="13sp"/>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="✓ Menumbuhkan semangat inovasi dan kemandirian di desa." android:fontFamily="@font/poppins_medium" android:textColor="#2F5DA9" android:paddingBottom="8dp" android:textSize="13sp"/>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="✓ Menjalin kemitraan antara mahasiswa, masyarakat, dan pemerintah." android:fontFamily="@font/poppins_medium" android:textColor="#2F5DA9" android:paddingBottom="8dp" android:textSize="13sp"/>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="✓ Mendorong terciptanya lingkungan desa yang berdaya dan berkelanjutan." android:fontFamily="@font/poppins_medium" android:textColor="#2F5DA9" android:textSize="13sp"/>
+            </LinearLayout>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardBackgroundColor="#E8F5E9"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-                        <ImageView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:src="@android:drawable/ic_popup_sync"
-                            app:tint="#2E7D32" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text="Sinkronisasi\nReal-time"
-                            android:textColor="#1B3022"
-                            android:fontFamily="@font/montserrat_black"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardBackgroundColor="#E8F5E9"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-                        <ImageView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:src="@android:drawable/ic_lock_idle_lock"
-                            app:tint="#2E7D32" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text="Keamanan\nEnd-to-End"
-                            android:textColor="#1B3022"
-                            android:fontFamily="@font/montserrat_black"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </GridLayout>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F0F0F0" android:layout_marginVertical="28dp"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:fontFamily="@font/montserrat_black"
-                android:text="Hubungi Kami"
-                android:textColor="@color/primary_dark"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Modul Kegiatan"
+                android:textColor="#1F3E73"
                 android:textSize="18sp" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="#F5F5F5"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Email Support:"
-                        android:textSize="12sp"
-                        android:alpha="0.6"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="support@nusadata.id"
-                        android:fontFamily="@font/montserrat_black"
-                        android:textColor="@color/primary"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:gravity="top">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📝" android:textSize="22sp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="14dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Modul Edukasi" android:fontFamily="@font/poppins_bold" android:textColor="#455A64" android:textSize="14sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Memberikan pelatihan kepada masyarakat agar mampu mandiri dalam mengelola potensi lokal secara berkelanjutan." android:fontFamily="@font/poppins_regular" android:textColor="#78909C" android:textSize="12sp" android:lineSpacingExtra="3dp"/>
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
-            <TextView
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:gravity="top">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="💡" android:textSize="22sp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="14dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Modul Inovasi" android:fontFamily="@font/poppins_bold" android:textColor="#455A64" android:textSize="14sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Memperkenalkan teknologi baru untuk meningkatkan produktivitas masyarakat dan efisiensi pembangunan desa." android:fontFamily="@font/poppins_regular" android:textColor="#78909C" android:textSize="12sp" android:lineSpacingExtra="3dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:gravity="top">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🤝" android:textSize="22sp"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="14dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Modul Kolaborasi" android:fontFamily="@font/poppins_bold" android:textColor="#455A64" android:textSize="14sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mendorong kerja sama aktif antara warga, mahasiswa, dan pemerintah untuk menciptakan desa yang tangguh." android:fontFamily="@font/poppins_regular" android:textColor="#78909C" android:textSize="12sp" android:lineSpacingExtra="3dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="20dp"
                 android:gravity="center"
-                android:text="© 2026 NusaData Indonesia\nVersi 2.0.4 - SNI 27001 Certified"
-                android:textColor="@color/text_disabled"
-                android:textSize="11sp" />
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Membangun Desa, Membangun Bangsa"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="#2F5DA9"
+                    android:textSize="11sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="© 2026 NusaData Indonesia • v2.0.4"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="#BDBDBD"
+                    android:textSize="10sp" />
+            </LinearLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
