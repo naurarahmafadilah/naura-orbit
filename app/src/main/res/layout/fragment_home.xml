@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFBFF">
+    android:fitsSystemWindows="false"
+    android:background="#F8FAFC">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -19,36 +20,52 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/bg_header_curved">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="28dp">
+                    android:paddingHorizontal="24dp"
+                    android:paddingTop="54dp"
+                    android:paddingBottom="64dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
                             android:gravity="center_vertical">
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:src="@drawable/logo_nusadata" />
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="0dp"
+                                android:backgroundTint="#33FFFFFF">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="6dp"
+                                    android:src="@drawable/logo_nusadata"
+                                    android:rotation="90"
+                                    app:tint="@color/white" />
+                            </com.google.android.material.card.MaterialCardView>
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
+                                android:layout_marginStart="12dp"
                                 android:text="NusaData"
                                 android:textColor="@color/white"
-                                android:fontFamily="@font/poppins_semibold"
-                                android:textSize="16sp" />
+                                android:fontFamily="@font/poppins_bold"
+                                android:textSize="20sp"
+                                android:letterSpacing="0.02"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -58,12 +75,12 @@
                             android:gravity="center_vertical">
 
                             <com.google.android.material.card.MaterialCardView
-                                android:layout_width="38dp"
-                                android:layout_height="38dp"
-                                app:cardCornerRadius="19dp"
-                                app:cardElevation="0dp"
-                                app:strokeWidth="1.5dp"
-                                app:strokeColor="#80FFFFFF">
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                app:cardCornerRadius="20dp"
+                                app:cardElevation="3dp"
+                                app:strokeWidth="2dp"
+                                app:strokeColor="@color/white">
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
@@ -73,11 +90,11 @@
 
                             <ImageView
                                 android:id="@+id/menuTopRight"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:padding="5dp"
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
+                                android:padding="8dp"
                                 android:layout_marginStart="8dp"
-                                android:src="@android:drawable/ic_menu_more"
+                                android:src="@drawable/abc_ic_menu_overflow_material"
                                 app:tint="@color/white"
                                 android:background="?attr/selectableItemBackgroundBorderless"
                                 android:clickable="true"
@@ -88,8 +105,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="35dp"
-                        android:text="Selamat Datang di NusaData"
+                        android:layout_marginTop="28dp"
+                        android:text="Selamat Datang Kembali 👋"
                         android:textColor="#CCFFFFFF"
                         android:fontFamily="@font/poppins_medium"
                         android:textSize="13sp" />
@@ -101,7 +118,10 @@
                         android:fontFamily="@font/poppins_bold"
                         android:text="Naura Rahma"
                         android:textColor="@color/white"
-                        android:textSize="26sp" />
+                        android:textSize="26sp"
+                        android:includeFontPadding="false"
+                        android:layout_marginTop="2dp"
+                        android:letterSpacing="-0.01"/>
                 </LinearLayout>
             </RelativeLayout>
 
@@ -109,25 +129,148 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp"
-                android:layout_marginTop="-45dp">
+                android:paddingHorizontal="20dp"
+                android:layout_marginTop="-40dp">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="3"
+                    android:alignmentMode="alignMargins">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btnTotalWarga"
+                        android:layout_width="0dp"
+                        android:layout_height="72dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="5dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="4dp"
+                        android:backgroundTint="@color/white"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="4dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1,240"
+                                android:textSize="15sp"
+                                android:fontFamily="@font/poppins_bold"
+                                android:textColor="#1E3E73"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Total Warga"
+                                android:textSize="10sp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textColor="#94A3B8"
+                                android:layout_marginTop="1dp"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btnTotalRTRW"
+                        android:layout_width="0dp"
+                        android:layout_height="72dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="5dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="4dp"
+                        android:backgroundTint="@color/white"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="4dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="04 / 02"
+                                android:textSize="15sp"
+                                android:fontFamily="@font/poppins_bold"
+                                android:textColor="#1E3E73"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Wilayah RT/RW"
+                                android:textSize="10sp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textColor="#94A3B8"
+                                android:layout_marginTop="1dp"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btnTotalKK"
+                        android:layout_width="0dp"
+                        android:layout_height="72dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="5dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="4dp"
+                        android:backgroundTint="@color/white"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="4dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="312"
+                                android:textSize="15sp"
+                                android:fontFamily="@font/poppins_bold"
+                                android:textColor="#1E3E73"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Keluarga (KK)"
+                                android:textSize="10sp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textColor="#94A3B8"
+                                android:layout_marginTop="1dp"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </GridLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayoutSearch"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:hint="Cari data kependudukan..."
+                    app:hintTextColor="#94A3B8"
                     app:boxBackgroundColor="@color/white"
                     app:boxCornerRadiusBottomEnd="16dp" app:boxCornerRadiusBottomStart="16dp"
                     app:boxCornerRadiusTopEnd="16dp" app:boxCornerRadiusTopStart="16dp"
-                    app:startIconDrawable="@android:drawable/ic_menu_search">
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeColor="#E2E8F0"
+                    app:startIconDrawable="@drawable/abc_ic_search_api_material"
+                    app:startIconTint="#2F5DA9"
+                    app:elevation="2dp">
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etSearch"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
-                        android:textSize="14sp" />
+                        android:paddingVertical="15dp"
+                        android:textSize="14sp"
+                        android:textColor="#1E293B" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -136,21 +279,22 @@
                     android:layout_marginTop="28dp"
                     android:text="Kategori Data"
                     android:fontFamily="@font/poppins_semibold"
-                    android:textColor="#1F3E73"
-                    android:textSize="14sp"/>
+                    android:textColor="#1E3E73"
+                    android:textSize="15sp"/>
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="12dp">
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/chipGroupCategory"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:singleSelection="true"
-                        app:selectionRequired="true">
+                        app:selectionRequired="true"
+                        app:chipSpacingHorizontal="10dp">
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chipWarga"
@@ -158,13 +302,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Warga"
-                            android:checked="true" />
+                            android:checked="true"
+                            android:fontFamily="@font/poppins_medium"
+                            app:chipBackgroundColor="@color/white"
+                            app:chipStrokeWidth="1dp"
+                            app:chipStrokeColor="#E2E8F0"
+                            android:textColor="#2F5DA9"/>
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chipKeluarga"
                             style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
                             android:text="Keluarga" />
 
                         <com.google.android.material.chip.Chip
@@ -172,6 +322,7 @@
                             style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
                             android:text="Kematian" />
 
                         <com.google.android.material.chip.Chip
@@ -179,6 +330,7 @@
                             style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
                             android:text="Kelahiran" />
 
                         <com.google.android.material.chip.Chip
@@ -186,6 +338,7 @@
                             style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
                             android:text="Pindah" />
 
                         <com.google.android.material.chip.Chip
@@ -193,81 +346,222 @@
                             style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
                             android:text="Lainnya" />
-
                     </com.google.android.material.chip.ChipGroup>
                 </HorizontalScrollView>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="Layanan Utama" android:fontFamily="@font/poppins_semibold" android:textColor="#1F3E73" android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:text="Layanan Utama"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="#1E3E73"
+                    android:textSize="15sp"/>
+
                 <GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:columnCount="3"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="12dp"
                     android:alignmentMode="alignMargins">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/cardWarga"
                         android:layout_width="0dp"
-                        android:layout_height="100dp"
+                        android:layout_height="104dp"
                         android:layout_columnWeight="1"
                         android:layout_margin="6dp"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="2dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="0dp"
+                        android:backgroundTint="#EDF5FF"
                         android:clickable="true"
-                        android:focusable="true">
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground">
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:orientation="vertical">
                             <ImageView
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:src="@android:drawable/ic_menu_myplaces"
                                 app:tint="#2F5DA9" />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Warga"
-                                android:textSize="11sp"
+                                android:textSize="12sp"
                                 android:layout_marginTop="8dp"
                                 android:fontFamily="@font/poppins_semibold"
-                                android:textColor="#455A64"/>
+                                android:textColor="#1F3E73"/>
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
-                    <com.google.android.material.card.MaterialCardView android:id="@+id/cardKeluarga" android:layout_width="0dp" android:layout_height="100dp" android:layout_columnWeight="1" android:layout_margin="6dp" app:cardCornerRadius="12dp" app:cardElevation="2dp" android:clickable="true" android:focusable="true">
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:orientation="vertical">
-                            <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@android:drawable/ic_menu_share" app:tint="#2F5DA9" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Keluarga" android:textSize="11sp" android:layout_marginTop="8dp" android:fontFamily="@font/poppins_semibold" android:textColor="#455A64"/>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardKeluarga"
+                        android:layout_width="0dp"
+                        android:layout_height="104dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="0dp"
+                        android:backgroundTint="#EDF5FF"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@android:drawable/ic_menu_share"
+                                app:tint="#2F5DA9" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Keluarga"
+                                android:textSize="12sp"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textColor="#1F3E73"/>
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
-                    <com.google.android.material.card.MaterialCardView android:id="@+id/cardKematian" android:layout_width="0dp" android:layout_height="100dp" android:layout_columnWeight="1" android:layout_margin="6dp" app:cardCornerRadius="12dp" app:cardElevation="2dp" android:clickable="true" android:focusable="true">
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:orientation="vertical">
-                            <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@android:drawable/ic_lock_idle_lock" app:tint="#D32F2F" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kematian" android:textSize="11sp" android:layout_marginTop="8dp" android:fontFamily="@font/poppins_semibold" android:textColor="#455A64"/>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardKematian"
+                        android:layout_width="0dp"
+                        android:layout_height="104dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="0dp"
+                        android:backgroundTint="#FCE8E6"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                                app:tint="#EA4335" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Kematian"
+                                android:textSize="12sp"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textColor="#C5221F"/>
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
-                    <com.google.android.material.card.MaterialCardView android:id="@+id/cardKelahiran" android:layout_width="0dp" android:layout_height="100dp" android:layout_columnWeight="1" android:layout_margin="6dp" app:cardCornerRadius="12dp" app:cardElevation="2dp" android:clickable="true" android:focusable="true">
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:orientation="vertical">
-                            <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@android:drawable/ic_input_add" app:tint="#388E3C" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kelahiran" android:textSize="11sp" android:layout_marginTop="8dp" android:fontFamily="@font/poppins_semibold" android:textColor="#455A64"/>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardKelahiran"
+                        android:layout_width="0dp"
+                        android:layout_height="104dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="0dp"
+                        android:backgroundTint="#E6F4EA"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@android:drawable/ic_input_add"
+                                app:tint="#137333" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Kelahiran"
+                                android:textSize="12sp"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textColor="#137333"/>
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
-                    <com.google.android.material.card.MaterialCardView android:id="@+id/cardPindah" android:layout_width="0dp" android:layout_height="100dp" android:layout_columnWeight="1" android:layout_margin="6dp" app:cardCornerRadius="12dp" app:cardElevation="2dp" android:clickable="true" android:focusable="true">
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:orientation="vertical">
-                            <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@android:drawable/ic_menu_send" app:tint="#F9A825" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pindah" android:textSize="11sp" android:layout_marginTop="8dp" android:fontFamily="@font/poppins_semibold" android:textColor="#455A64"/>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardPindah"
+                        android:layout_width="0dp"
+                        android:layout_height="104dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="0dp"
+                        android:backgroundTint="#FEF7E0"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@android:drawable/ic_menu_send"
+                                app:tint="#B06000" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pindah"
+                                android:textSize="12sp"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textColor="#B06000"/>
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
-                    <com.google.android.material.card.MaterialCardView android:id="@+id/menuMore" android:layout_width="0dp" android:layout_height="100dp" android:layout_columnWeight="1" android:layout_margin="6dp" app:cardCornerRadius="12dp" app:cardElevation="2dp" android:clickable="true" android:focusable="true">
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:orientation="vertical">
-                            <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@android:drawable/ic_menu_add" app:tint="#2F5DA9" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lainnya" android:textSize="11sp" android:layout_marginTop="8dp" android:fontFamily="@font/poppins_semibold" android:textColor="#455A64"/>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/menuMore"
+                        android:layout_width="0dp"
+                        android:layout_height="104dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="0dp"
+                        android:backgroundTint="#F1F5F9"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/abc_ic_menu_overflow_material"
+                                app:tint="#475569" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Lainnya"
+                                android:textSize="12sp"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textColor="#475569"/>
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
                 </GridLayout>
@@ -278,39 +572,42 @@
                     android:layout_marginTop="28dp"
                     android:text="Informasi &amp; Privasi"
                     android:fontFamily="@font/poppins_semibold"
-                    android:textColor="#1F3E73"
-                    android:textSize="14sp"/>
+                    android:textColor="#1E3E73"
+                    android:textSize="15sp"/>
+
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="2dp"
+                    android:layout_marginTop="12dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
                     app:strokeWidth="1dp"
-                    app:strokeColor="#EEEEEE">
+                    app:strokeColor="#F1F5F9"
+                    android:backgroundTint="@color/white">
                     <LinearLayout
                         android:id="@+id/containerInfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="8dp" />
+                        android:padding="16dp" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnLogout"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="35dp"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="40dp"
                     android:layout_marginBottom="40dp"
                     android:text="Keluar dari Sistem"
                     android:fontFamily="@font/poppins_bold"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    app:cornerRadius="15dp"
-                    android:backgroundTint="#D32F2F"
-                    app:icon="@android:drawable/ic_lock_power_off"
-                    app:iconGravity="textStart"
-                    app:iconPadding="12dp"/>
+                    android:textColor="#DC2626"
+                    android:textSize="14sp"
+                    app:cornerRadius="16dp"
+                    android:backgroundTint="#FEE2E2"
+                    app:iconTint="#DC2626"
+                    app:iconPadding="10dp"/>
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

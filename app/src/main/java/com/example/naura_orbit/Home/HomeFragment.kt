@@ -13,6 +13,9 @@ import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import com.example.naura_orbit.Home.pertemuan_3.LoginActivity
+import com.example.naura_orbit.Home.pertemuan_10.WargaActivity
+// 🟢 1. IMPORT KELUARGA ACTIVITY BARU KAMU DI SINI
+import com.example.naura_orbit.Home.pertemuan_10.keluarga.KeluargaActivity
 import com.example.naura_orbit.databinding.FragmentHomeBinding
 import com.google.android.material.chip.Chip
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -97,9 +100,19 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupMenuClick() {
-        // Listener klik untuk 6 kartu layanan utama
-        binding.cardWarga.setOnClickListener { Toast.makeText(context, "Membuka Data Warga", Toast.LENGTH_SHORT).show() }
-        binding.cardKeluarga.setOnClickListener { Toast.makeText(context, "Membuka Data Keluarga", Toast.LENGTH_SHORT).show() }
+        // PERTEMUAN 10: Mengarahkan Card Warga untuk membuka WargaActivity (TabLayout & RecyclerView)
+        binding.cardWarga.setOnClickListener {
+            val intent = Intent(requireContext(), WargaActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 🟢 2. SEKARANG CARD KELUARGA MEMBUKA KELUARGA ACTIVITY SECARA NYATA
+        binding.cardKeluarga.setOnClickListener {
+            val intent = Intent(requireContext(), KeluargaActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Menu lainnya memunculkan Toast penanda
         binding.cardKematian.setOnClickListener { Toast.makeText(context, "Membuka Data Kematian", Toast.LENGTH_SHORT).show() }
         binding.cardKelahiran.setOnClickListener { Toast.makeText(context, "Membuka Data Kelahiran", Toast.LENGTH_SHORT).show() }
         binding.cardPindah.setOnClickListener { Toast.makeText(context, "Membuka Data Pindah", Toast.LENGTH_SHORT).show() }

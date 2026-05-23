@@ -19,9 +19,9 @@
             app:title="Kalkulator Kubus"
             app:titleCentered="true"
             app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            app:titleTextColor="#1E293B"
+            app:titleTextColor="#A0ADC1"
             app:navigationIcon="@drawable/ic_back"
-            app:navigationIconTint="#1E293B"/> </com.google.android.material.appbar.AppBarLayout>
+            app:navigationIconTint="#FFFFFF"/> </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
