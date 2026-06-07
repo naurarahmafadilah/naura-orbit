@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.naura_orbit.About.AboutFragment
 import com.example.naura_orbit.Home.HomeFragment
 import com.example.naura_orbit.Profile.ProfileFragment
+import com.example.naura_orbit.Note.NoteFragment // 1. Pastikan import fragment note baru ini sudah ditambahkan
 import com.example.naura_orbit.R
 import com.example.naura_orbit.databinding.ActivityBaseBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -36,7 +37,6 @@ class BaseActivity : AppCompatActivity() {
 
         // 4. Tampilkan Fragment Home secara default
         if (savedInstanceState == null) {
-
             replaceFragment(HomeFragment())
         }
 
@@ -50,6 +50,12 @@ class BaseActivity : AppCompatActivity() {
                 R.id.nav_home -> {
                     replaceFragment(HomeFragment())
                     Toast.makeText(this, "NusaData Home", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                // 2. Tambahkan aksi perpindahan ke NoteFragment di sini
+                R.id.note -> {
+                    replaceFragment(NoteFragment())
+                    Toast.makeText(this, "Catatan NusaData", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.nav_about -> {

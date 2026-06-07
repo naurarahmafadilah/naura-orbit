@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0F2B5C"
+    android:padding="32dp">
+
+    <!-- ================= ORNAMEN BACKGROUND PREMIUM ================= -->
+    <!-- Ornamen Lingkaran Glow Kiri Bawah -->
+    <View
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="-100dp"
+        android:layout_marginStart="-100dp"
+        android:background="@android:drawable/ic_menu_compass"
+        android:backgroundTint="#2F76E2"
+        android:alpha="0.08" />
+
+    <!-- Ornamen Geometris Kanan Atas -->
+    <View
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-40dp"
+        android:layout_marginEnd="-40dp"
+        android:background="@drawable/logo_nusadata"
+        android:backgroundTint="#FFFFFF"
+        android:alpha="0.04" />
+
+    <!-- ================= KONTEN UTAMA (DI-CENTER) ================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!-- Frame Ikon Minimalis Berbentuk Melingkar -->
+        <FrameLayout
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginBottom="44dp"
+            android:background="@android:drawable/toast_frame"
+            android:backgroundTint="#1AFFFFFF">
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:src="@drawable/logo_nusadata"
+                android:contentDescription="Illustration Icon"
+                app:tint="#FFFFFF"
+                android:alpha="0.95" />
+        </FrameLayout>
+
+        <!-- Judul Utama Eksklusif (Menggunakan Poppins Bold) -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mulai Jelajahi Data\nKependudukan NusaData"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:letterSpacing="0.01"
+            android:lineSpacingMultiplier="1.2" />
+
+        <!-- Sub-deskripsi Elegan (Menggunakan Poppins Regular) -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginHorizontal="20dp"
+            android:text="Seluruh data kelurahan kini terintegrasi, transparan, dan dapat diakses dengan satu sentuhan mudah."
+            android:textColor="#CBD5E1"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:alpha="0.85"
+            android:lineSpacingMultiplier="1.35" />
+    </LinearLayout>
+
+    <!-- Bagian bawah sengaja dikosongkan agar Tombol Biru bawaan AuthActivity ter-frame dengan pas -->
+
+</RelativeLayout>

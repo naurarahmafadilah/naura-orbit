@@ -592,22 +592,37 @@
                         android:padding="16dp" />
                 </com.google.android.material.card.MaterialCardView>
 
+                <!-- 🟢 SEKTOR TAMBAHAN PERTEMUAN 11: LIST BERITA API PUBLIC -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:text="Berita Terkini NusaData"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="#1E3E73"
+                    android:textSize="15sp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:nestedScrollingEnabled="false" />
+
+                <!-- 🔴 PERBAIKAN TOMBOL LOGOUT YANG TERPOTONG -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnLogout"
                     style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="32dp"
                     android:layout_marginBottom="40dp"
-                    android:text="Keluar dari Sistem"
-                    android:fontFamily="@font/poppins_bold"
-                    android:textAllCaps="false"
-                    android:textColor="#DC2626"
-                    android:textSize="14sp"
-                    app:cornerRadius="16dp"
-                    android:backgroundTint="#FEE2E2"
-                    app:iconTint="#DC2626"
-                    app:iconPadding="10dp"/>
+                    android:text="Keluar Sistem"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_semibold"
+                    app:backgroundTint="#EA4335"
+                    app:cornerRadius="16dp"/>
+
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

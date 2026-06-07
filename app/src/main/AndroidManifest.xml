@@ -14,19 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nauraorbit">
         <activity
-            android:name=".Home.pertemuan_10.keluarga.KeluargaTabAdapter"
+            android:name=".Note.KkFormActivity"
             android:exported="false" />
         <activity
-            android:name=".Home.pertemuan_10.keluarga.KeluargaAdapter"
+            android:name=".Note.NoteFormActivity"
             android:exported="false" />
         <activity
             android:name=".Home.pertemuan_10.keluarga.KeluargaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Home.pertemuan_10.WargaAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".Home.pertemuan_10.WargaTabsAdapter"
             android:exported="false" />
         <activity
             android:name=".Home.pertemuan_10.WargaActivity"

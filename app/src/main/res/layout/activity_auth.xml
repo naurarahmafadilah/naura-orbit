@@ -1,10 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AuthActivity">
+    android:background="#0F2B5C">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- ViewPager dibuat FULLSCREEN tanpa batas potongan bawah -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Kontrol Navigasi Bawah (Melayang Transparan di Atas ViewPager) -->
+    <RelativeLayout
+        android:id="@+id/layoutBottom"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/transparent">
+
+        <!-- Indikator Slide Elegan (Menggunakan Font Poppins agar Titik Bulat Sempurna) -->
+        <TextView
+            android:id="@+id/tvIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:text="● ○ ○"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppins_regular"
+            android:letterSpacing="0.1"
+            android:alpha="0.8"/>
+
+        <!-- Tombol Lanjut (Gaya Semi-Transparent Pill untuk Slide 1 & 2) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNext"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="Lanjut"
+            android:textColor="#0F2B5C"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_bold"
+            app:backgroundTint="#FFFFFF"
+            app:cornerRadius="25dp"
+            app:rippleColor="#D1E4FF"
+            app:elevation="2dp" />
+
+        <!-- Tombol Ayo Mulai Premium Lebar (Hanya Muncul di Slide Terakhir) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAyoMulai"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_centerInParent="true"
+            android:text="Ayo Mulai"
+            android:textColor="#0F2B5C"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_bold"
+            android:letterSpacing="0.05"
+            android:visibility="gone"
+            app:backgroundTint="#FFFFFF"
+            app:cornerRadius="28dp"
+            app:rippleColor="#D1E4FF"
+            app:elevation="4dp" />
+
+    </RelativeLayout>
+</RelativeLayout>
