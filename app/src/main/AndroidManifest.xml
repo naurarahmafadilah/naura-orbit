@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Izin Akses Internet untuk API Pertemuan 11 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,68 +14,72 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nauraorbit">
-        <activity
-            android:name=".Home.pertemuan_10.keluarga.KeluargaTabAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".Home.pertemuan_10.keluarga.KeluargaAdapter"
-            android:exported="false" />
+
+        <!-- 🟢 HANYA ACTIVITY YANG BOLEH ADA DI SINI (ADAPTER SUDAH DIHAPUS) -->
         <activity
             android:name=".Home.pertemuan_10.keluarga.KeluargaActivity"
             android:exported="false" />
-        <activity
-            android:name=".Home.pertemuan_10.WargaAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".Home.pertemuan_10.WargaTabsAdapter"
-            android:exported="false" />
+
         <activity
             android:name=".Home.pertemuan_10.WargaActivity"
             android:exported="false" />
+
+        <!-- Launcher Utama Aplikasi -->
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Home.pertemuan_3.LoginActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
             android:name=".Home.pertemuan_3.RegisterActivity"
             android:exported="false" />
+
         <activity
             android:name=".Home.pertemuan_3.VerificationActivity"
             android:exported="false" />
+
         <activity
             android:name=".Home.pertemuan_3.GreetingActivity"
             android:exported="false" />
+
         <activity
             android:name=".pertemuan_6.BaseActivity"
             android:exported="false"
             android:label="Nusa Data" />
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
         <activity
             android:name=".Home.pertemuan_4.Custom2Activity"
             android:exported="false" />
+
         <activity
             android:name=".Home.pertemuan_4.Custom1Activity"
             android:exported="false" />
+
         <activity
             android:name=".Home.pertemuan_4.BangunRuangActivity"
             android:exported="false" />
+
         <activity
             android:name=".AuthActivity"
             android:exported="false" />
+
         <activity
             android:name=".WebViewActivity"
             android:exported="false" />
+
         <activity
             android:name=".Home.pertemuan_2.pertemuan_2"
             android:exported="false" />

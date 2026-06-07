@@ -12,13 +12,17 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope // Tambahan untuk Coroutine API
+import androidx.recyclerview.widget.LinearLayoutManager // Tambahan untuk List Berita
 import com.example.naura_orbit.Home.pertemuan_3.LoginActivity
 import com.example.naura_orbit.Home.pertemuan_10.WargaActivity
-// 🟢 1. IMPORT KELUARGA ACTIVITY BARU KAMU DI SINI
 import com.example.naura_orbit.Home.pertemuan_10.keluarga.KeluargaActivity
+import com.example.naura_orbit.Home.pertemuan_11.api_news.NewsAdapter
+import com.example.naura_orbit.Home.pertemuan_11.api_news.NewsApiClient
 import com.example.naura_orbit.databinding.FragmentHomeBinding
 import com.google.android.material.chip.Chip
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.launch // Tambahan untuk Coroutine Launch
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -67,7 +71,11 @@ class HomeFragment : Fragment() {
         setupMenuClick()
         setupInfoList()
 
-        // 5. Logic Tombol Logout
+        // 🟢 5. JALANKAN LOGIKA DATA LIST BERITA API PUBLIC (PERTEMUAN 11)
+        setupNewsRecyclerView()
+        fetchNewsData()
+
+        // 6. Logic Tombol Logout
         binding.btnLogout.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext())
                 .setTitle("Keluar")
@@ -83,7 +91,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun updateChipVisuals() {
-        // Mengatur warna chip (Biru Tua jika dipilih, Biru Muda jika tidak)
         for (i in 0 until binding.chipGroupCategory.childCount) {
             val chip = binding.chipGroupCategory.getChildAt(i) as Chip
             if (chip.isChecked) {
@@ -100,23 +107,47 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupMenuClick() {
-        // PERTEMUAN 10: Mengarahkan Card Warga untuk membuka WargaActivity (TabLayout & RecyclerView)
         binding.cardWarga.setOnClickListener {
             val intent = Intent(requireContext(), WargaActivity::class.java)
             startActivity(intent)
         }
 
-        // 🟢 2. SEKARANG CARD KELUARGA MEMBUKA KELUARGA ACTIVITY SECARA NYATA
         binding.cardKeluarga.setOnClickListener {
             val intent = Intent(requireContext(), KeluargaActivity::class.java)
             startActivity(intent)
         }
 
-        // Menu lainnya memunculkan Toast penanda
         binding.cardKematian.setOnClickListener { Toast.makeText(context, "Membuka Data Kematian", Toast.LENGTH_SHORT).show() }
         binding.cardKelahiran.setOnClickListener { Toast.makeText(context, "Membuka Data Kelahiran", Toast.LENGTH_SHORT).show() }
         binding.cardPindah.setOnClickListener { Toast.makeText(context, "Membuka Data Pindah", Toast.LENGTH_SHORT).show() }
         binding.menuMore.setOnClickListener { Toast.makeText(context, "Membuka Menu Lainnya", Toast.LENGTH_SHORT).show() }
+    }
+
+    // 🟢 6. FUNGSI BARU PERTEMUAN 11: MENYIAPKAN INSTANCE RECYCLERVIEW BERITA
+    private fun setupNewsRecyclerView() {
+        binding.rvNews.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvNews.setHasFixedSize(true)
+    }
+
+    // 🟢 7. FUNGSI BARU PERTEMUAN 11: MENARIK DATA BERITA SECARA ASINKRONUS (COROUTINE)
+    private fun fetchNewsData() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                // Memanggil class Retrofit Client dari folder pertemuan_11
+                val response = NewsApiClient.apiService.getTopNews()
+
+                if (response.isNotEmpty()) {
+                    // Pasangkan list data ke adapter RecyclerView
+                    val newsAdapter = NewsAdapter(response)
+                    binding.rvNews.adapter = newsAdapter
+                } else {
+                    Toast.makeText(requireContext(), "Data berita kosong", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                // Mencegah aplikasi crash jika kuota habis / offline
+                Toast.makeText(requireContext(), "Gagal memuat berita dari API", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun setupInfoList() {
@@ -131,7 +162,6 @@ class HomeFragment : Fragment() {
                 setPadding(40, 40, 40, 40)
                 setTextColor(Color.parseColor("#455A64"))
 
-                // Efek klik ripple
                 val outValue = android.util.TypedValue()
                 context.theme.resolveAttribute(android.R.attr.selectableItemBackground, outValue, true)
                 setBackgroundResource(outValue.resourceId)
@@ -146,7 +176,6 @@ class HomeFragment : Fragment() {
             }
             container.addView(itemView)
 
-            // Tambahkan garis pembatas (divider) kecuali item terakhir
             if (index < infoList.size - 1) {
                 val divider = View(requireContext()).apply {
                     layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1)

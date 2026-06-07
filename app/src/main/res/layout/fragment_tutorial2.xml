@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0F2B5C"
+    android:padding="32dp">
+
+    <View
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="-80dp"
+        android:layout_marginEnd="-80dp"
+        android:background="@android:drawable/ic_menu_compass"
+        android:backgroundTint="#2F76E2"
+        android:alpha="0.06" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginBottom="44dp"
+            android:background="@android:drawable/toast_frame"
+            android:backgroundTint="#1AFFFFFF">
+
+            <ImageView
+                android:id="@+id/imgTutorial2"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:src="@android:drawable/ic_menu_agenda"
+                android:contentDescription="Ilustrasi Layanan"
+                app:tint="#FFFFFF"
+                android:alpha="0.95" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvTitle2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Layanan Mandiri Warga"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:letterSpacing="0.01" />
+
+        <TextView
+            android:id="@+id/tvDesc2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginHorizontal="20dp"
+            android:text="Akses data kartu keluarga, kelola informasi mandiri, dan dapatkan berita kependudukan terupdate langsung dari genggaman."
+            android:textColor="#CBD5E1"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:alpha="0.85"
+            android:lineSpacingMultiplier="1.35" />
+    </LinearLayout>
+
+</RelativeLayout>
