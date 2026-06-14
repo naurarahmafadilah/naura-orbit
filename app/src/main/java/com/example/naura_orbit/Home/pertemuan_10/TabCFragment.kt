@@ -13,6 +13,10 @@ class TabCFragment : Fragment() {
 
     private lateinit var binding: FragmentTabCBinding
 
+    // 1. Ubah list dan adapter menjadi variabel global kelas agar bisa diakses dari luar
+    private val listWargaDesa = mutableListOf<WargaModel>()
+    private lateinit var wargaAdapter: WargaAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,11 +28,13 @@ class TabCFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Generate 50 data warga secara otomatis
-        val listWargaDesa = generate50Warga()
+        // 2. Isi list global dengan 50 data awal jika list-nya masih kosong
+        if (listWargaDesa.isEmpty()) {
+            listWargaDesa.addAll(generate50Warga())
+        }
 
         // Inisialisasi adapter dengan data warga dan callback klik tombol detail
-        val wargaAdapter = WargaAdapter(listWargaDesa) { warga ->
+        wargaAdapter = WargaAdapter(listWargaDesa) { warga ->
             Toast.makeText(requireContext(), "Membuka detail data: ${warga.nama}", Toast.LENGTH_SHORT).show()
         }
 
@@ -39,22 +45,32 @@ class TabCFragment : Fragment() {
         }
     }
 
+    // 3. Fungsi publik untuk menerima data warga baru dari WargaActivity
+    fun tambahDataWargaBaru(wargaBaru: WargaModel) {
+        // Tambahkan ke baris paling atas (indeks 0) agar user langsung melihat data yang baru masuk
+        listWargaDesa.add(0, wargaBaru)
+
+        // Beritahu adapter bahwa ada item baru di posisi paling atas
+        if (::wargaAdapter.isInitialized) {
+            wargaAdapter.notifyItemInserted(0)
+            binding.rvWargaProduk.scrollToPosition(0) // Otomatis scroll ke atas
+        }
+    }
+
     // Fungsi helper untuk membuat 50 data tiruan dengan cepat
     private fun generate50Warga(): List<WargaModel> {
         val daftar = mutableListOf<WargaModel>()
 
-        // Data dasar cetakan yang diambil dari dashboard web NusaData Anda
         val namaDasar = listOf("Kartika", "Garda Nainggolan S.H.", "Kani Vicky Zulaika")
         val jkDasar = listOf("Laki-laki", "Laki-laki", "Perempuan")
         val pekerjaanDasar = listOf("Pelajar", "Tukang Kayu", "Ibu Rumah Tangga")
         val emailDasar = listOf("oktaviani.laswi", "darsirah.utami", "raden.rahmawati")
 
         for (i in 1..50) {
-            // Menentukan indeks dasar (0, 1, atau 2) secara bergantian menggunakan modul (%)
             val index = (i - 1) % 3
 
             val namaUnik = "${namaDasar[index]} Ke-$i"
-            val ktpUnik = "352239190808${5000 + i}" // Angka KTP berubah di bagian belakang
+            val ktpUnik = "352239190808${5000 + i}"
             val jkUnik = jkDasar[index]
             val agamaUnik = "Islam"
             val pekerjaanUnik = pekerjaanDasar[index]
