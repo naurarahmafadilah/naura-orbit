@@ -35,7 +35,11 @@ class TabCFragment : Fragment() {
 
         // Inisialisasi adapter dengan data warga dan callback klik tombol detail
         wargaAdapter = WargaAdapter(listWargaDesa) { warga ->
-            Toast.makeText(requireContext(), "Membuka detail data: ${warga.nama}", Toast.LENGTH_SHORT).show()
+            com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Detail Informasi Warga")
+                .setMessage("Nama: ${warga.nama}\n\nNo KTP:\n${warga.noKtp}\n\nJenis Kelamin: ${warga.jenisKelamin}\nAgama: ${warga.agama}\n\nPekerjaan:\n${warga.pekerjaan}\n\nNo. Telp: ${warga.telp}\nEmail: ${warga.email}")
+                .setPositiveButton("Tutup", null)
+                .show()
         }
 
         // Setup RecyclerView dengan format vertikal memanjang ke bawah

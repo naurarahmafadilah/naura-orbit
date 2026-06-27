@@ -18,11 +18,29 @@ class NewsAdapter(private val newsList: List<NewsModel>) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val news = newsList[position]
-        holder.binding.tvNewsTitle.text = "Berita NusaData: ${news.author}"
+        holder.binding.tvNewsTitle.text = news.author
 
-        // Memuat gambar berita dari API menggunakan library Glide
+        // Set realistic categories and dates for Bina Desa
+        when (position % 3) {
+            0 -> {
+                holder.binding.tvNewsCategory.text = "INFO DIGITAL"
+                holder.binding.tvNewsDate.text = "Baru saja"
+            }
+            1 -> {
+                holder.binding.tvNewsCategory.text = "STATISTIK WARGA"
+                holder.binding.tvNewsDate.text = "3 jam yang lalu"
+            }
+            2 -> {
+                holder.binding.tvNewsCategory.text = "BINA DESA"
+                holder.binding.tvNewsDate.text = "Kemarin"
+            }
+        }
+
+        // Memuat gambar berita (bisa berupa URL picsum atau path resource lokal)
         Glide.with(holder.itemView.context)
             .load(news.download_url)
+            .placeholder(android.R.drawable.ic_menu_gallery)
+            .error(android.R.drawable.ic_menu_gallery)
             .into(holder.binding.imgNews)
     }
 

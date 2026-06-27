@@ -59,10 +59,11 @@ class WargaActivity : AppCompatActivity() {
             finish()
         }
 
-        // Aksi Klik Tombol Tambah Warga (+) di Pojok Kanan Atas Header Premium
+        // Aksi Klik Tombol Tambah Warga (+) di Pojok Kanan Atas Header Premium (Mengarahkan ke Google Form Pendataan)
         binding.btnAddWarga.setOnClickListener {
-            val intent = Intent(this, TambahWargaActivity::class.java)
-            formResultLauncher.launch(intent)
+            val url = "https://docs.google.com/forms/d/e/1FAIpQLScyv10v-3lT_XgS3tU6h9U-Q9m8xXJvU80F_WJtP6vJvDqUgw/viewform?usp=sf_link"
+            val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url))
+            startActivity(intent)
         }
 
         // Inisialisasi Adapter Utama

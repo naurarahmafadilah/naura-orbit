@@ -4,122 +4,135 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F2F8">
+    android:background="#F6F9FC">
 
+    <!-- Top Premium Dark Blue Banner -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="180dp"
         android:background="@android:color/transparent"
         app:elevation="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/bg_header_curved" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:paddingTop="50dp">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="110dp"
-                    android:layout_height="110dp"
-                    app:cardCornerRadius="55dp"
-                    app:cardElevation="8dp"
-                    app:strokeWidth="3dp"
-                    app:strokeColor="#FFFFFF">
-
-                    <ImageView
-                        android:id="@+id/img_profile_detail"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/foto_profil" />
-                </com.google.android.material.card.MaterialCardView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="Naura Rahma Fadilah"
-                    android:textColor="#FFFFFF"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="UI/UX Designer • 2457301111"
-                    android:textColor="#D1E3FF"
-                    android:textSize="14sp" />
-            </LinearLayout>
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_header_curved">
 
             <ImageButton
                 android:id="@+id/btnBack"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_margin="12dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="28dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@android:drawable/ic_menu_revert"
                 android:rotation="180"
                 app:tint="#FFFFFF" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="38dp"
+                android:text="Profil Detail"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins_bold" />
+
         </RelativeLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <!-- Scrollable Profile Cards -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="-60dp"
+        android:layout_marginTop="-40dp"
+        android:clipToPadding="false"
+        android:paddingBottom="120dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <!-- RelativeLayout container to allow overlap of photo and card without clipping -->
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:paddingHorizontal="20dp"
+            android:paddingTop="10dp">
 
+            <!-- Profile Info Card (shifted down to draw behind photo) -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardProfileHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="20dp"
+                android:layout_marginTop="48dp"
                 android:layout_marginBottom="16dp"
-                app:cardElevation="2dp">
+                app:cardCornerRadius="24dp"
+                app:cardElevation="3dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#EAEFF5"
+                android:backgroundTint="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:gravity="center_horizontal"
+                    android:paddingTop="60dp"
+                    android:paddingBottom="20dp"
+                    android:paddingHorizontal="20dp">
 
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sistem Informasi" android:textStyle="bold" android:textColor="#1F3E73" android:layout_marginBottom="16dp"/>
+                    <TextView
+                        android:id="@+id/tvProfileName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Naura Rahma"
+                        android:textColor="#1F3E73"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/poppins_bold" />
 
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="12dp">
-                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_dialog_info" app:tint="#1F3E73"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sistem Informasi" android:layout_marginStart="12dp" android:textColor="#444444"/>
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvProfileRole"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="NIM 2457301111"
+                        android:textColor="#64748B"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/poppins_medium" />
 
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_menu_myplaces" app:tint="#1F3E73"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Politeknik Caltex Riau" android:layout_marginStart="12dp" android:textColor="#444444"/>
-                    </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Circular Profile Photo (overlaps card Profile Header) -->
             <com.google.android.material.card.MaterialCardView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                app:cardCornerRadius="48dp"
+                app:cardElevation="4dp"
+                app:strokeWidth="3dp"
+                app:strokeColor="#FFFFFF"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true">
+
+                <ImageView
+                    android:id="@+id/img_profile_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/foto_profil" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 1: Data Pribadi (placed below cardProfileHeader) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDataPribadi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="20dp"
+                android:layout_below="@id/cardProfileHeader"
                 android:layout_marginBottom="16dp"
-                app:cardElevation="2dp">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#EAEFF5"
+                android:backgroundTint="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -127,35 +140,211 @@
                     android:orientation="vertical"
                     android:padding="20dp">
 
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kontak Digital" android:textStyle="bold" android:textColor="#1F3E73" android:layout_marginBottom="16dp"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Data Pribadi"
+                            android:textColor="#1F3E73"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/poppins_bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="Diajukan"
+                            android:textColor="#2F5DA9"
+                            android:textSize="11sp"
+                            android:background="#EAF2FF"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="2dp"
+                            android:fontFamily="@font/poppins_medium" />
+                    </RelativeLayout>
+
+                    <!-- Fields -->
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Asal Sekolah" android:textColor="#8A9AA8" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Politeknik Caltex Riau" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Identitas" android:textColor="#8A9AA8" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Mahasiswa" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Alamat" android:textColor="#8A9AA8" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Jl. Umban Sari No. 1" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kode Pos" android:textColor="#8A9AA8" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="28265" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kabupaten/Kota" android:textColor="#8A9AA8" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Pekanbaru" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 2: Data Keluarga (placed below cardDataPribadi) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDataKeluarga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cardDataPribadi"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#EAEFF5"
+                android:backgroundTint="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Data Keluarga &amp; Akademik"
+                        android:textColor="#1F3E73"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_marginBottom="16dp"/>
+
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Program Studi" android:textColor="#8A9AA8" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Sistem Informasi" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tahun Masuk" android:textColor="#8A9AA8" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="2024" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Jenis Kelamin" android:textColor="#8A9AA8" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Perempuan" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 3: Kontak Digital (placed below cardDataKeluarga) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardKontakDigital"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cardDataKeluarga"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#EAEFF5"
+                android:backgroundTint="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kontak Digital &amp; Media"
+                        android:textColor="#1F3E73"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_marginBottom="16dp"/>
 
                     <LinearLayout android:id="@+id/btnInstagram" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="?attr/selectableItemBackground" android:paddingVertical="8dp" android:layout_marginBottom="8dp">
                         <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@android:drawable/ic_menu_camera" app:tint="#E1306C"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@naurarahmafadilah" android:layout_marginStart="12dp" android:textColor="#333333" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@naurarahmafadilah" android:layout_marginStart="12dp" android:textColor="#333333" android:fontFamily="@font/poppins_medium" android:textSize="13sp"/>
                     </LinearLayout>
 
                     <LinearLayout android:id="@+id/btnEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="?attr/selectableItemBackground" android:paddingVertical="8dp" android:layout_marginBottom="8dp">
                         <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@android:drawable/ic_dialog_email" app:tint="#D44638"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="naura24si@mahasiswa.pcr.ac.id" android:layout_marginStart="12dp" android:textColor="#333333" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="naura24si@mahasiswa.pcr.ac.id" android:layout_marginStart="12dp" android:textColor="#333333" android:fontFamily="@font/poppins_medium" android:textSize="13sp"/>
                     </LinearLayout>
 
                     <LinearLayout android:id="@+id/btnGithub" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="?attr/selectableItemBackground" android:paddingVertical="8dp">
-                        <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@android:drawable/btn_star_big_on" app:tint="#333333"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="github.com/naura-orbit" android:layout_marginStart="12dp" android:textColor="#1E88E5" android:textStyle="bold"/>
+                        <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@android:drawable/btn_star_big_on" app:tint="#1E88E5"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="github.com/naura-orbit" android:layout_marginStart="12dp" android:textColor="#1E88E5" android:fontFamily="@font/poppins_medium" android:textSize="13sp"/>
                     </LinearLayout>
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Card 4: Fitur & Layanan Pengguna (placed below cardKontakDigital) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardLayananPengguna"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cardKontakDigital"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#EAEFF5"
+                android:backgroundTint="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bantuan &amp; Pengaturan"
+                        android:textColor="#1F3E73"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- Menu 1: Pengaturan Akun -->
+                    <LinearLayout android:id="@+id/btnSettings" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="?attr/selectableItemBackground" android:paddingVertical="10dp" android:layout_marginBottom="8dp">
+                        <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@android:drawable/ic_menu_preferences" app:tint="#2F5DA9"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Pengaturan Akun" android:layout_marginStart="12dp" android:textColor="#333333" android:fontFamily="@font/poppins_medium" android:textSize="13sp"/>
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@android:drawable/ic_media_play" android:rotation="0" app:tint="#B0BEC5"/>
+                    </LinearLayout>
+
+                    <!-- Menu 2: Pusat Bantu -->
+                    <LinearLayout android:id="@+id/btnHelpCenter" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="?attr/selectableItemBackground" android:paddingVertical="10dp">
+                        <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@android:drawable/ic_menu_help" app:tint="#FF8F00"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Pusat Bantu" android:layout_marginStart="12dp" android:textColor="#333333" android:fontFamily="@font/poppins_medium" android:textSize="13sp"/>
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@android:drawable/ic_media_play" android:rotation="0" app:tint="#B0BEC5"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Edit Profile Button (placed below cardLayananPengguna) -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEditProfile"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
+                android:layout_below="@id/cardLayananPengguna"
                 android:text="Kelola Profil"
-                app:cornerRadius="12dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_bold"
+                app:cornerRadius="14dp"
                 android:backgroundTint="#1F3E73"
                 android:textAllCaps="false"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                app:elevation="2dp"/>
 
-        </LinearLayout>
+        </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

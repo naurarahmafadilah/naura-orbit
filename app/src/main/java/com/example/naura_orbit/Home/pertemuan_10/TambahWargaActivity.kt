@@ -90,7 +90,7 @@ class TambahWargaActivity : AppCompatActivity() {
                 )
                 Toast.makeText(this, "Data disimpan & pengingat disetel $mntReminder menit lagi", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Data warga berhasil ditambahkan", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Data warga berhasil ditambahkan!!", Toast.LENGTH_SHORT).show()
             }
 
             finish()

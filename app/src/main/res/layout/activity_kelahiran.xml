@@ -44,7 +44,7 @@
                             android:layout_centerVertical="true"
                             android:gravity="center_vertical">
                             <ImageView
-                                android:id="@+id/btnBackWarga"
+                                android:id="@+id/btnBackKelahiran"
                                 android:layout_width="26dp"
                                 android:layout_height="26dp"
                                 android:src="@drawable/ic_back"
@@ -56,7 +56,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
-                                android:text="Data Warga"
+                                android:text="Data Kelahiran"
                                 android:textColor="@color/white"
                                 android:fontFamily="@font/poppins_semibold"
                                 android:textSize="18sp"
@@ -69,7 +69,7 @@
                             android:layout_alignParentEnd="true"
                             android:gravity="center_vertical">
                             <ImageView
-                                android:id="@+id/btnAddWarga"
+                                android:id="@+id/btnAddKelahiran"
                                 android:layout_width="38dp"
                                 android:layout_height="38dp"
                                 android:padding="7dp"
@@ -94,7 +94,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="Manajemen Warga"
+                        android:text="Manajemen Kelahiran"
                         android:textColor="@color/white"
                         android:textSize="24sp"
                         android:includeFontPadding="false"
@@ -129,17 +129,17 @@
                             android:gravity="center"
                             android:orientation="vertical">
                             <TextView
-                                android:id="@+id/tvCountTotalWarga"
+                                android:id="@+id/tvCountTotalKelahiran"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="1.245"
+                                android:text="45"
                                 android:textSize="14sp"
                                 android:fontFamily="@font/poppins_bold"
                                 android:textColor="#2F5DA9"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Total Warga"
+                                android:text="Total Lahir"
                                 android:textSize="10sp"
                                 android:fontFamily="@font/poppins_medium"
                                 android:textColor="#7F8C8D"/>
@@ -160,10 +160,10 @@
                             android:gravity="center"
                             android:orientation="vertical">
                             <TextView
-                                android:id="@+id/tvCountWargaLaki"
+                                android:id="@+id/tvCountLahirLaki"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="620"
+                                android:text="24"
                                 android:textSize="14sp"
                                 android:fontFamily="@font/poppins_bold"
                                 android:textColor="#2F5DA9"/>
@@ -191,10 +191,10 @@
                             android:gravity="center"
                             android:orientation="vertical">
                             <TextView
-                                android:id="@+id/tvCountWargaPerempuan"
+                                android:id="@+id/tvCountLahirPerempuan"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="625"
+                                android:text="21"
                                 android:textSize="14sp"
                                 android:fontFamily="@font/poppins_bold"
                                 android:textColor="#E91E63"/>
@@ -210,12 +210,12 @@
                 </GridLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayoutSearchWarga"
+                    android:id="@+id/textInputLayoutSearchKelahiran"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:hint="Cari NIK atau nama warga..."
+                    android:hint="Cari nama bayi atau orang tua.."
                     app:hintTextColor="#9EAAB6"
                     app:boxBackgroundColor="@color/white"
                     app:boxCornerRadiusBottomEnd="14dp" app:boxCornerRadiusBottomStart="14dp"
@@ -226,7 +226,7 @@
                     app:startIconTint="#2F5DA9"
                     app:elevation="3dp">
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etSearchWarga"
+                        android:id="@+id/etSearchKelahiran"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
@@ -236,7 +236,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tabLayoutWarga"
+                    android:id="@+id/tabLayoutKelahiran"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -249,9 +249,9 @@
                     app:tabMode="fixed"/>
 
                 <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/viewPagerWarga"
+                    android:id="@+id/viewPagerKelahiran"
                     android:layout_width="match_parent"
-                    android:layout_height="2200dp"
+                    android:layout_height="900dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="120dp"/>
 

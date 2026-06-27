@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F9FC"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ringkasan Statistik Kelahiran"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="#1F3E73"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Analisis angka kelahiran bayi baru lahir di desa NusaData secara real-time."
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="#7F8C8D"
+            android:textSize="12sp"
+            android:layout_marginTop="2dp"/>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:alignmentMode="alignMargins"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="6dp"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:backgroundTint="@color/white"
+                app:strokeWidth="0dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rasio Pertumbuhan"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="#7F8C8D"
+                        android:textSize="11sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+2.4%"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="#137333"
+                        android:textSize="22sp"
+                        android:layout_marginTop="4dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tahun Ini"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="#9EAAB6"
+                        android:textSize="10sp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="6dp"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                android:backgroundTint="@color/white"
+                app:strokeWidth="0dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bulan Ini"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="#7F8C8D"
+                        android:textSize="11sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4 Bayi"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="#2F5DA9"
+                        android:textSize="22sp"
+                        android:layout_marginTop="4dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Telah Terdata"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="#9EAAB6"
+                        android:textSize="10sp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </GridLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            android:backgroundTint="@color/white"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tren Kelahiran 3 Bulan Terakhir"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="#1F3E73"
+                    android:textSize="14sp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mei 2026"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="#2C3E50"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="8 Bayi"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="#2F5DA9"
+                        android:textSize="12sp"/>
+                </RelativeLayout>
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:layout_marginTop="8dp"
+                    android:progress="80"
+                    app:trackThickness="6dp"
+                    app:trackCornerRadius="3dp"
+                    app:trackColor="#F0F7FF"
+                    app:indicatorColor="#2F5DA9"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Juni 2026"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="#2C3E50"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="5 Bayi"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="#2F5DA9"
+                        android:textSize="12sp"/>
+                </RelativeLayout>
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:layout_marginTop="8dp"
+                    android:progress="50"
+                    app:trackThickness="6dp"
+                    app:trackCornerRadius="3dp"
+                    app:trackColor="#F0F7FF"
+                    app:indicatorColor="#2F5DA9"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Juli 2026 (Sedang Berjalan)"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="#2C3E50"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="4 Bayi"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="#2F5DA9"
+                        android:textSize="12sp"/>
+                </RelativeLayout>
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:layout_marginTop="8dp"
+                    android:progress="40"
+                    app:trackThickness="6dp"
+                    app:trackCornerRadius="3dp"
+                    app:trackColor="#F0F7FF"
+                    app:indicatorColor="#2F5DA9"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -27,6 +27,15 @@
             android:name=".Home.pertemuan_10.keluarga.KeluargaActivity"
             android:exported="false" />
         <activity
+            android:name=".Home.pertemuan_10.kelahiran.KelahiranActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home.pertemuan_10.kematian.KematianActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home.pertemuan_10.pindah.PindahActivity"
+            android:exported="false" />
+        <activity
             android:name=".Home.pertemuan_10.WargaActivity"
             android:exported="false" />
         <activity
@@ -75,6 +84,12 @@
             android:exported="false" />
         <activity
             android:name=".Home.pertemuan_2.pertemuan_2"
+            android:exported="false" />
+        <activity
+            android:name=".Profile.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Profile.HelpCenterActivity"
             android:exported="false" />
     </application>
 

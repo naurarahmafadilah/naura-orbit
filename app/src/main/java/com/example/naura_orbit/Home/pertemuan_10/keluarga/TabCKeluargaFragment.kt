@@ -81,7 +81,11 @@ class TabCKeluargaFragment : Fragment() {
         // Setup RecyclerView dengan ID rvKeluargaTabC yang sudah diperbaiki
         binding.rvKeluargaTabC.layoutManager = LinearLayoutManager(requireContext())
         binding.rvKeluargaTabC.adapter = KeluargaAdapter(dataKeluarga) { keluarga ->
-            Toast.makeText(context, "Detail KK: ${keluarga.kepalaKeluarga}", Toast.LENGTH_SHORT).show()
+            com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Detail Kartu Keluarga (KK)")
+                .setMessage("No KK:\n${keluarga.noKK}\n\nKepala Keluarga:\n${keluarga.kepalaKeluarga}\n\nAlamat:\n${keluarga.alamat}\n\nJumlah Anggota Keluarga: ${keluarga.jumlahAnggota} Jiwa")
+                .setPositiveButton("Tutup", null)
+                .show()
         }
     }
 

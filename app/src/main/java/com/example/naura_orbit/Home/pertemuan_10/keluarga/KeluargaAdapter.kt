@@ -22,6 +22,10 @@ class KeluargaAdapter(
             binding.tvItemAlamatKeluarga.text = keluarga.alamat
             binding.tvItemJumlahAnggota.text = "${keluarga.jumlahAnggota} Anggota"
 
+            binding.btnDetailKeluarga.setOnClickListener {
+                onItemClick(keluarga)
+            }
+
             binding.root.setOnClickListener {
                 onItemClick(keluarga)
             }

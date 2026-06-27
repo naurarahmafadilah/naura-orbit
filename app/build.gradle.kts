@@ -67,3 +67,13 @@ dependencies {
     ksp ("androidx.room:room-compiler:$room_version")
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 }
+
+tasks.register<Copy>("copyModernVillageImage") {
+    from("C:/Users/ASUS/.gemini/antigravity/brain/d7e7cf1b-1c02-4c33-8825-5aadbd65faaf/modern_village_about_1783347304625.jpg")
+    into("src/main/res/drawable")
+    rename { "modern_village_about.jpg" }
+}
+
+tasks.matching { it.name == "preBuild" }.configureEach {
+    dependsOn("copyModernVillageImage")
+}
