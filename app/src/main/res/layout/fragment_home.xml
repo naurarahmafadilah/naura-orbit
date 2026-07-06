@@ -725,7 +725,7 @@
                             <ImageView
                                 android:layout_width="26dp"
                                 android:layout_height="26dp"
-                                android:src="@android:drawable/ic_menu_myplaces"
+                                android:src="@drawable/ic_warga_modern"
                                 app:tint="#2F5DA9" />
                             <TextView
                                 android:layout_width="wrap_content"
@@ -761,7 +761,7 @@
                             <ImageView
                                 android:layout_width="26dp"
                                 android:layout_height="26dp"
-                                android:src="@android:drawable/ic_menu_share"
+                                android:src="@drawable/ic_keluarga_modern"
                                 app:tint="#2F5DA9" />
                             <TextView
                                 android:layout_width="wrap_content"
@@ -797,7 +797,7 @@
                             <ImageView
                                 android:layout_width="26dp"
                                 android:layout_height="26dp"
-                                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                                android:src="@drawable/ic_kematian_modern"
                                 app:tint="#EA4335" />
                             <TextView
                                 android:layout_width="wrap_content"
@@ -833,7 +833,7 @@
                             <ImageView
                                 android:layout_width="26dp"
                                 android:layout_height="26dp"
-                                android:src="@android:drawable/ic_input_add"
+                                android:src="@drawable/ic_kelahiran_modern"
                                 app:tint="#137333" />
                             <TextView
                                 android:layout_width="wrap_content"
@@ -869,7 +869,7 @@
                             <ImageView
                                 android:layout_width="26dp"
                                 android:layout_height="26dp"
-                                android:src="@android:drawable/ic_menu_send"
+                                android:src="@drawable/ic_pindah_modern"
                                 app:tint="#B06000" />
                             <TextView
                                 android:layout_width="wrap_content"
@@ -905,7 +905,7 @@
                             <ImageView
                                 android:layout_width="26dp"
                                 android:layout_height="26dp"
-                                android:src="@drawable/abc_ic_menu_overflow_material"
+                                android:src="@drawable/ic_lainnya_modern"
                                 app:tint="#FF8F00" />
                             <TextView
                                 android:layout_width="wrap_content"

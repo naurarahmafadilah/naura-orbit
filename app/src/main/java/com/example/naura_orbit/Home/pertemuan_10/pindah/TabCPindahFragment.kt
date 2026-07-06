@@ -93,6 +93,15 @@ class TabCPindahFragment : Fragment() {
         return list
     }
 
+    fun tambahPindahBaru(pindah: PindahModel) {
+        listPindah.add(0, pindah)
+        listPindahFiltered.add(0, pindah)
+        if (::adapter.isInitialized) {
+            adapter.notifyItemInserted(0)
+            binding.rvPindah.scrollToPosition(0)
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

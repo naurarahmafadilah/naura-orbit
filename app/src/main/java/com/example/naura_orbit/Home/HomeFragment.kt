@@ -251,17 +251,20 @@ class HomeFragment : Fragment() {
             NewsModel(
                 id = "1",
                 author = "Digitalisasi Akta Kelahiran dan KIA Desa NusaData Resmi Diluncurkan",
-                download_url = "android.resource://com.example.naura_orbit/drawable/futuristic_hub"
+                download_url = "android.resource://com.example.naura_orbit/drawable/futuristic_hub",
+                content = "Desa NusaData resmi meluncurkan program digitalisasi akta kelahiran dan Kartu Identitas Anak (KIA). Kepala Desa menyampaikan bahwa langkah ini bertujuan untuk mempermudah pelayanan administrasi warga secara cepat, transparan, dan terintegrasi secara online. Warga kini dapat mengajukan pendaftaran secara mandiri langsung melalui aplikasi NusaData tanpa perlu antre lama di kantor balai desa. Semua berkas akan diverifikasi secara digital oleh petugas kependudukan secara efisien."
             ),
             NewsModel(
                 id = "2",
                 author = "Pemutakhiran Data Warga Secara Kolektif Menuju NusaData Mandiri 2026",
-                download_url = "android.resource://com.example.naura_orbit/drawable/desa"
+                download_url = "android.resource://com.example.naura_orbit/drawable/desa",
+                content = "Dalam rangka menyongsong tahun kemandirian data kependudukan 2026, pemerintah desa menyelenggarakan pemutakhiran data secara kolektif. Kegiatan ini melibatkan seluruh ketua RT/RW dan kader PKK untuk mencatat perubahan status perkawinan, kepindahan, kematian, dan kelahiran warga. Dengan data kependudukan yang akurat, pembagian bantuan sosial dan fasilitas kesehatan dapat tersalurkan tepat sasaran bagi warga yang benar-benar membutuhkan."
             ),
             NewsModel(
                 id = "3",
                 author = "Sensus Penduduk dan Pemetaan Wilayah Desa Menggunakan Aplikasi Orbit",
-                download_url = "android.resource://com.example.naura_orbit/drawable/logo_nusadata"
+                download_url = "android.resource://com.example.naura_orbit/drawable/logo_nusadata",
+                content = "Aplikasi Orbit secara resmi diintegrasikan untuk menunjang kegiatan sensus penduduk di Desa NusaData. Melalui sistem ini, pemetaan demografis dan analisis kebutuhan infrastruktur desa seperti akses air bersih, listrik, dan jalan raya dapat dipantau langsung dalam bentuk grafik visual. Kerja sama ini diharapkan mempercepat pembangunan fisik dan pelayanan kesejahteraan warga secara digital."
             )
         )
 
@@ -287,10 +290,23 @@ class HomeFragment : Fragment() {
                 setBackgroundResource(outValue.resourceId)
 
                 setOnClickListener {
+                    val detailMessage = when (title) {
+                        "Kebijakan Privasi" -> 
+                            "Kami di NusaData berkomitmen untuk melindungi informasi pribadi Anda. Kebijakan privasi ini menjelaskan bagaimana data kependudukan Anda dikumpulkan, disimpan, dan digunakan secara aman. Kami memastikan seluruh data tersimpan dalam enkripsi lokal pada database Room Anda, serta tidak membagikan informasi sensitif ini kepada pihak ketiga tanpa persetujuan Anda."
+                        "Tentang NusaData" -> 
+                            "NusaData adalah aplikasi administrasi kependudukan tingkat RT/RW dan Desa yang dirancang untuk mendigitalisasi pencatatan data warga, keluarga, kelahiran, kematian, dan perpindahan secara cepat dan efisien. Dengan NusaData, pengelolaan administrasi warga dapat diakses di mana saja dan kapan saja secara anda serta aman."
+                        "Pusat Bantuan" -> 
+                            "Butuh bantuan dalam menggunakan aplikasi NusaData? Anda dapat mengakses petunjuk penggunaan di menu Pusat Bantuan. Jika Anda menemukan kendala teknis atau memiliki pertanyaan seputar cara menginput data warga, silakan menghubungi administrator desa kami melalui email naura24si@mahasiswa.pcr.ac.id."
+                        "Syarat & Ketentuan" -> 
+                            "Dengan menggunakan aplikasi NusaData, Anda menyetujui bahwa seluruh informasi warga yang Anda masukkan adalah benar, akurat, dan dapat dipertanggungjawabkan. Penyalahgunaan data warga atau penginputan informasi palsu dapat dikenakan sanksi administrasi dan hukum sesuai undang-undang perlindungan data yang berlaku."
+                        "Versi Aplikasi v1.0.4" -> 
+                            "Aplikasi NusaData Versi 1.0.4 (Build Terakhir).\n\nCatatan Rilis:\n- Mendesain ulang ikon navigasi bawah agar lebih premium.\n- Penyelarasan layout halaman About dengan gambar Desa kependudukan.\n- Integrasi form input kependudukan lokal secara penuh.\n- Menambahkan efek collapsing scroll pada header halaman.\n- Mendukung fitur Edit & Hapus Catatan.\n- Menambahkan peninjau detail Berita Terkini."
+                        else -> "Detail informasi mengenai $title."
+                    }
                     MaterialAlertDialogBuilder(requireContext())
                         .setTitle(title)
-                        .setMessage("Detail informasi mengenai $title.")
-                        .setPositiveButton("Ok", null)
+                        .setMessage(detailMessage)
+                        .setPositiveButton("Tutup", null)
                         .show()
                 }
             }

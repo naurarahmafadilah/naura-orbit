@@ -59,12 +59,30 @@ class WargaActivity : AppCompatActivity() {
             finish()
         }
 
-        // Aksi Klik Tombol Tambah Warga (+) di Pojok Kanan Atas Header Premium (Mengarahkan ke Google Form Pendataan)
+        // Aksi Klik Tombol Tambah Warga (+) di Pojok Kanan Atas Header Premium (Membuka Form Tambah Warga Lokal)
         binding.btnAddWarga.setOnClickListener {
-            val url = "https://docs.google.com/forms/d/e/1FAIpQLScyv10v-3lT_XgS3tU6h9U-Q9m8xXJvU80F_WJtP6vJvDqUgw/viewform?usp=sf_link"
-            val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url))
-            startActivity(intent)
+            val intent = Intent(this, TambahWargaActivity::class.java)
+            formResultLauncher.launch(intent)
         }
+
+        // Menambahkan listener pencarian untuk menyaring data warga secara dinamis
+        binding.etSearchWarga.addTextChangedListener(object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val query = s?.toString() ?: ""
+                
+                // Otomatis berpindah ke tab Daftar Warga saat mulai mencari agar hasilnya langsung terlihat
+                if (query.trim().isNotEmpty() && binding.viewPagerWarga.currentItem != 2) {
+                    binding.viewPagerWarga.currentItem = 2
+                }
+                
+                val fragment = supportFragmentManager.findFragmentByTag("f2")
+                if (fragment is TabCFragment) {
+                    fragment.performSearch(query)
+                }
+            }
+            override fun afterTextChanged(s: android.text.Editable?) {}
+        })
 
         // Inisialisasi Adapter Utama
         val tabsAdapter = WargaTabsAdapter(this)

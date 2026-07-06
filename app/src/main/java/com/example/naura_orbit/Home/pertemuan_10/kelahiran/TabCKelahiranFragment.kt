@@ -92,6 +92,15 @@ class TabCKelahiranFragment : Fragment() {
         return list
     }
 
+    fun tambahKelahiranBaru(kelahiran: KelahiranModel) {
+        listKelahiran.add(0, kelahiran)
+        listKelahiranFiltered.add(0, kelahiran)
+        if (::adapter.isInitialized) {
+            adapter.notifyItemInserted(0)
+            binding.rvKelahiran.scrollToPosition(0)
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

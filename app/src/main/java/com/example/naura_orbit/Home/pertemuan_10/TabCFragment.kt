@@ -13,8 +13,8 @@ class TabCFragment : Fragment() {
 
     private lateinit var binding: FragmentTabCBinding
 
-    // 1. Ubah list dan adapter menjadi variabel global kelas agar bisa diakses dari luar
-    private val listWargaDesa = mutableListOf<WargaModel>()
+    private val fullListWargaDesa = mutableListOf<WargaModel>()
+    private val displayedListWargaDesa = mutableListOf<WargaModel>()
     private lateinit var wargaAdapter: WargaAdapter
 
     override fun onCreateView(
@@ -28,13 +28,15 @@ class TabCFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 2. Isi list global dengan 50 data awal jika list-nya masih kosong
-        if (listWargaDesa.isEmpty()) {
-            listWargaDesa.addAll(generate50Warga())
+        // Isi list global dengan 50 data awal jika list-nya masih kosong
+        if (fullListWargaDesa.isEmpty()) {
+            fullListWargaDesa.addAll(generate50Warga())
         }
+        displayedListWargaDesa.clear()
+        displayedListWargaDesa.addAll(fullListWargaDesa)
 
-        // Inisialisasi adapter dengan data warga dan callback klik tombol detail
-        wargaAdapter = WargaAdapter(listWargaDesa) { warga ->
+        // Inisialisasi adapter dengan data warga yang ditampilkan
+        wargaAdapter = WargaAdapter(displayedListWargaDesa) { warga ->
             com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
                 .setTitle("Detail Informasi Warga")
                 .setMessage("Nama: ${warga.nama}\n\nNo KTP:\n${warga.noKtp}\n\nJenis Kelamin: ${warga.jenisKelamin}\nAgama: ${warga.agama}\n\nPekerjaan:\n${warga.pekerjaan}\n\nNo. Telp: ${warga.telp}\nEmail: ${warga.email}")
@@ -49,15 +51,33 @@ class TabCFragment : Fragment() {
         }
     }
 
-    // 3. Fungsi publik untuk menerima data warga baru dari WargaActivity
+    // Fungsi publik untuk menerima data warga baru dari WargaActivity
     fun tambahDataWargaBaru(wargaBaru: WargaModel) {
-        // Tambahkan ke baris paling atas (indeks 0) agar user langsung melihat data yang baru masuk
-        listWargaDesa.add(0, wargaBaru)
+        fullListWargaDesa.add(0, wargaBaru)
+        displayedListWargaDesa.add(0, wargaBaru)
 
         // Beritahu adapter bahwa ada item baru di posisi paling atas
         if (::wargaAdapter.isInitialized) {
             wargaAdapter.notifyItemInserted(0)
             binding.rvWargaProduk.scrollToPosition(0) // Otomatis scroll ke atas
+        }
+    }
+
+    // Fungsi publik untuk melakukan pencarian warga berdasarkan NIK atau Nama
+    fun performSearch(query: String) {
+        val cleanQuery = query.trim().lowercase()
+        displayedListWargaDesa.clear()
+        if (cleanQuery.isEmpty()) {
+            displayedListWargaDesa.addAll(fullListWargaDesa)
+        } else {
+            val filtered = fullListWargaDesa.filter {
+                it.nama.lowercase().contains(cleanQuery) ||
+                it.noKtp.lowercase().contains(cleanQuery)
+            }
+            displayedListWargaDesa.addAll(filtered)
+        }
+        if (::wargaAdapter.isInitialized) {
+            wargaAdapter.notifyDataSetChanged()
         }
     }
 

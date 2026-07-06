@@ -21,20 +21,24 @@ class NewsAdapter(private val newsList: List<NewsModel>) : RecyclerView.Adapter<
         holder.binding.tvNewsTitle.text = news.author
 
         // Set realistic categories and dates for Bina Desa
+        var categoryText = ""
+        var dateText = ""
         when (position % 3) {
             0 -> {
-                holder.binding.tvNewsCategory.text = "INFO DIGITAL"
-                holder.binding.tvNewsDate.text = "Baru saja"
+                categoryText = "INFO DIGITAL"
+                dateText = "Baru saja"
             }
             1 -> {
-                holder.binding.tvNewsCategory.text = "STATISTIK WARGA"
-                holder.binding.tvNewsDate.text = "3 jam yang lalu"
+                categoryText = "STATISTIK WARGA"
+                dateText = "3 jam yang lalu"
             }
             2 -> {
-                holder.binding.tvNewsCategory.text = "BINA DESA"
-                holder.binding.tvNewsDate.text = "Kemarin"
+                categoryText = "BINA DESA"
+                dateText = "Kemarin"
             }
         }
+        holder.binding.tvNewsCategory.text = categoryText
+        holder.binding.tvNewsDate.text = dateText
 
         // Memuat gambar berita (bisa berupa URL picsum atau path resource lokal)
         Glide.with(holder.itemView.context)
@@ -42,6 +46,35 @@ class NewsAdapter(private val newsList: List<NewsModel>) : RecyclerView.Adapter<
             .placeholder(android.R.drawable.ic_menu_gallery)
             .error(android.R.drawable.ic_menu_gallery)
             .into(holder.binding.imgNews)
+
+        // Aksi Klik Card Berita untuk melihat detail lengkap
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            
+            // Inflate custom dialog layout
+            val dialogBinding = com.example.naura_orbit.databinding.DialogNewsDetailBinding.inflate(
+                LayoutInflater.from(context)
+            )
+            
+            // Bind data to dialog views
+            dialogBinding.tvDetailTitle.text = news.author
+            dialogBinding.tvDetailContent.text = news.content
+            dialogBinding.tvDetailCategory.text = categoryText
+            dialogBinding.tvDetailDate.text = "Diposting: $dateText"
+            
+            // Load news image into dialog
+            Glide.with(context)
+                .load(news.download_url)
+                .placeholder(android.R.drawable.ic_menu_gallery)
+                .error(android.R.drawable.ic_menu_gallery)
+                .into(dialogBinding.imgDetailNews)
+            
+            // Show the custom popup dialog
+            com.google.android.material.dialog.MaterialAlertDialogBuilder(context)
+                .setView(dialogBinding.root)
+                .setPositiveButton("Tutup") { d, _ -> d.dismiss() }
+                .show()
+        }
     }
 
     override fun getItemCount(): Int = newsList.size

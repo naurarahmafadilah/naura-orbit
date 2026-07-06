@@ -16,7 +16,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_header_curved">
+            android:background="@drawable/bg_header_curved"
+            app:layout_scrollFlags="scroll|enterAlways">
 
             <ImageButton
                 android:id="@+id/btnBack"
@@ -25,8 +26,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="28dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@android:drawable/ic_menu_revert"
-                android:rotation="180"
+                android:src="@drawable/ic_back"
                 app:tint="#FFFFFF" />
 
             <TextView
@@ -167,27 +167,27 @@
                     <!-- Fields -->
                     <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Asal Sekolah" android:textColor="#8A9AA8" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Politeknik Caltex Riau" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                        <TextView android:id="@+id/tvAsalSekolah" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Politeknik Caltex Riau" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
                     </RelativeLayout>
 
                     <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Identitas" android:textColor="#8A9AA8" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Mahasiswa" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                        <TextView android:id="@+id/tvIdentitas" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Mahasiswa" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
                     </RelativeLayout>
 
                     <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Alamat" android:textColor="#8A9AA8" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Jl. Umban Sari No. 1" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                        <TextView android:id="@+id/tvAlamat" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Jl. Umban Sari No. 1" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
                     </RelativeLayout>
 
                     <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kode Pos" android:textColor="#8A9AA8" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="28265" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                        <TextView android:id="@+id/tvKodePos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="28265" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
                     </RelativeLayout>
 
                     <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kabupaten/Kota" android:textColor="#8A9AA8" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Pekanbaru" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                        <TextView android:id="@+id/tvKabupatenKota" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Pekanbaru" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -223,17 +223,17 @@
 
                     <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Program Studi" android:textColor="#8A9AA8" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Sistem Informasi" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                        <TextView android:id="@+id/tvProgramStudi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Sistem Informasi" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
                     </RelativeLayout>
 
                     <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tahun Masuk" android:textColor="#8A9AA8" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="2024" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                        <TextView android:id="@+id/tvTahunMasuk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="2024" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
                     </RelativeLayout>
 
                     <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Jenis Kelamin" android:textColor="#8A9AA8" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Perempuan" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                        <TextView android:id="@+id/tvJenisKelamin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Perempuan" android:textColor="#333333" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -269,17 +269,17 @@
 
                     <LinearLayout android:id="@+id/btnInstagram" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="?attr/selectableItemBackground" android:paddingVertical="8dp" android:layout_marginBottom="8dp">
                         <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@android:drawable/ic_menu_camera" app:tint="#E1306C"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@naurarahmafadilah" android:layout_marginStart="12dp" android:textColor="#333333" android:fontFamily="@font/poppins_medium" android:textSize="13sp"/>
+                        <TextView android:id="@+id/tvInstagramUser" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@naurarahmafadilah" android:layout_marginStart="12dp" android:textColor="#333333" android:fontFamily="@font/poppins_medium" android:textSize="13sp"/>
                     </LinearLayout>
 
                     <LinearLayout android:id="@+id/btnEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="?attr/selectableItemBackground" android:paddingVertical="8dp" android:layout_marginBottom="8dp">
                         <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@android:drawable/ic_dialog_email" app:tint="#D44638"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="naura24si@mahasiswa.pcr.ac.id" android:layout_marginStart="12dp" android:textColor="#333333" android:fontFamily="@font/poppins_medium" android:textSize="13sp"/>
+                        <TextView android:id="@+id/tvEmailAddress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="naura24si@mahasiswa.pcr.ac.id" android:layout_marginStart="12dp" android:textColor="#333333" android:fontFamily="@font/poppins_medium" android:textSize="13sp"/>
                     </LinearLayout>
 
                     <LinearLayout android:id="@+id/btnGithub" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="?attr/selectableItemBackground" android:paddingVertical="8dp">
                         <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@android:drawable/btn_star_big_on" app:tint="#1E88E5"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="github.com/naura-orbit" android:layout_marginStart="12dp" android:textColor="#1E88E5" android:fontFamily="@font/poppins_medium" android:textSize="13sp"/>
+                        <TextView android:id="@+id/tvGithubLink" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="github.com/naura-orbit" android:layout_marginStart="12dp" android:textColor="#1E88E5" android:fontFamily="@font/poppins_medium" android:textSize="13sp"/>
                     </LinearLayout>
 
                 </LinearLayout>

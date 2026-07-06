@@ -17,6 +17,21 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
+        // Animasi Logo Nusa Data
+        val logoContainer = findViewById<android.view.View>(R.id.logo_container)
+        if (logoContainer != null) {
+            logoContainer.alpha = 0f
+            logoContainer.scaleX = 0.8f
+            logoContainer.scaleY = 0.8f
+            logoContainer.animate()
+                .alpha(1f)
+                .scaleX(1.0f)
+                .scaleY(1.0f)
+                .setDuration(1200)
+                .setInterpolator(android.view.animation.DecelerateInterpolator())
+                .start()
+        }
+
         // Mengambil SharedPreferences
         sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
 

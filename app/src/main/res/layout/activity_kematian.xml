@@ -73,7 +73,7 @@
                                 android:layout_width="38dp"
                                 android:layout_height="38dp"
                                 android:padding="7dp"
-                                android:src="@android:drawable/ic_input_add"
+                                android:src="@drawable/ic_add"
                                 app:tint="@color/white"
                                 android:background="?attr/selectableItemBackgroundBorderless"
                                 android:clickable="true"

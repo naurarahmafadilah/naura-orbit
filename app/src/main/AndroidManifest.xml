@@ -91,6 +91,9 @@
         <activity
             android:name=".Profile.HelpCenterActivity"
             android:exported="false" />
+        <activity
+            android:name=".Profile.EditProfileActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

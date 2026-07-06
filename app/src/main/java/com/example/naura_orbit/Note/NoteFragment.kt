@@ -63,19 +63,36 @@ class NoteFragment : Fragment() {
     // Mengambil data dari tabel warga di Room Database & Mengontrol Tampilan Empty State
     private fun fetchNotes() {
         lifecycleScope.launch {
-            val dataWarga = db.wargaDao().getAllWarga()
-            wargaList.clear()
-            wargaList.addAll(dataWarga)
-            adapter.notifyDataSetChanged()
-
-            // --- KONTROL VISIBILITY EMPTY STATE (VERSI 1) ---
-            if (wargaList.isEmpty()) {
-                binding.layoutEmptyState.visibility = View.VISIBLE // Munculkan pemberitahuan kosong
-                binding.rvNotes.visibility = View.GONE             // Sembunyikan daftar RecyclerView
+            val list = db.wargaDao().getAllWarga()
+            if (list.isEmpty()) {
+                prePopulateNotes()
             } else {
-                binding.layoutEmptyState.visibility = View.GONE    // Sembunyikan pemberitahuan kosong
-                binding.rvNotes.visibility = View.VISIBLE          // Tampilkan daftar RecyclerView
+                binding.layoutEmptyState.visibility = View.GONE
+                binding.rvNotes.visibility = View.VISIBLE
+                val noteAdapter = NoteAdapter(list, this@NoteFragment)
+                binding.rvNotes.adapter = noteAdapter
             }
+        }
+    }
+
+    private fun prePopulateNotes() {
+        lifecycleScope.launch {
+            val sampleNotes = listOf(
+                WargaEntity(nama = "Rahmat Simbolon", nik = "3201234567890001", rtRw = "Pengajuan pembuatan Akta Kelahiran anak pertama yang belum terbit di RT 04/RW 02."),
+                WargaEntity(nama = "Siti Aminah", nik = "3201234567890005", rtRw = "Laporan perpindahan alamat domisili secara mandiri ke RT 05/RW 02."),
+                WargaEntity(nama = "Ahmad Fauzi", nik = "3201234567890006", rtRw = "Pendaftaran perbaikan data pada Kartu Identitas Anak (KIA) yang salah ketik NIK."),
+                WargaEntity(nama = "Bambang Pamungkas", nik = "3201234567890007", rtRw = "Aspirasi permohonan pengadaan fasilitas tempat pembuangan sampah di RT 02/RW 01."),
+                WargaEntity(nama = "Dewi Lestari", nik = "3201234567890009", rtRw = "Pengajuan bantuan sosial sembako berkala untuk lansia di RT 04/RW 01.")
+            )
+            for (note in sampleNotes) {
+                db.wargaDao().insertWarga(note)
+            }
+            // Muat ulang daftar setelah selesai di-seed
+            val list = db.wargaDao().getAllWarga()
+            binding.layoutEmptyState.visibility = View.GONE
+            binding.rvNotes.visibility = View.VISIBLE
+            val noteAdapter = NoteAdapter(list, this@NoteFragment)
+            binding.rvNotes.adapter = noteAdapter
         }
     }
 
@@ -85,6 +102,15 @@ class NoteFragment : Fragment() {
             db.wargaDao().deleteWarga(warga)
             fetchNotes() // Refresh data otomatis & cek ulang status list kosong
             Toast.makeText(requireContext(), "Data berhasil dihapus", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    // Fungsi update data warga yang dipanggil dari NoteAdapter
+    fun updateNote(warga: WargaEntity) {
+        lifecycleScope.launch {
+            db.wargaDao().updateWarga(warga)
+            fetchNotes() // Refresh data otomatis & cek ulang status list kosong
+            Toast.makeText(requireContext(), "Data berhasil diperbarui", Toast.LENGTH_SHORT).show()
         }
     }
 

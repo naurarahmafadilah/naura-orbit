@@ -92,6 +92,15 @@ class TabCKematianFragment : Fragment() {
         return list
     }
 
+    fun tambahKematianBaru(kematian: KematianModel) {
+        listKematian.add(0, kematian)
+        listKematianFiltered.add(0, kematian)
+        if (::adapter.isInitialized) {
+            adapter.notifyItemInserted(0)
+            binding.rvKematian.scrollToPosition(0)
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
