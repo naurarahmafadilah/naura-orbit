@@ -12,52 +12,68 @@
         android:background="@android:color/transparent"
         app:elevation="0dp">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="110dp"
             android:background="@drawable/bg_header_curved">
 
             <ImageButton
                 android:id="@+id/btnBack"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginStart="12dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@android:drawable/ic_menu_revert"
-                android:rotation="180"
-                app:tint="#FFFFFF" />
+                android:src="@drawable/ic_back"
+                app:tint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.6" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="38dp"
-                android:text="Settings"
+                android:text="Pengaturan"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
-                android:fontFamily="@font/poppins_bold" />
+                android:fontFamily="@font/poppins_bold"
+                app:layout_constraintBottom_toBottomOf="@id/btnBack"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/btnBack" />
 
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="-20dp"
+        android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:paddingHorizontal="20dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Akun &amp; Keamanan"
+                android:textColor="#1F3E73"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginBottom="10dp"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="2dp"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
                 app:strokeWidth="1dp"
                 app:strokeColor="#EAEFF5"
                 android:backgroundTint="@color/white">
@@ -66,31 +82,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:padding="16dp">
 
-                    <!-- Privacy Option -->
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingVertical="10dp">
+                        android:layout_height="wrap_content">
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@id/switchPrivacy"
                             android:layout_centerVertical="true">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Privacy"
+                                android:text="Privasi Akun"
                                 android:textColor="#1F3E73"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:fontFamily="@font/poppins_bold"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Notifiksun Toggut"
-                                android:textColor="#7F8C8D"
+                                android:text="Sembunyikan data ringkasan profil"
+                                android:textColor="#627D98"
                                 android:textSize="12sp"
                                 android:fontFamily="@font/poppins_regular"/>
                         </LinearLayout>
@@ -100,38 +115,37 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
-                            android:checked="true"/>
+                            android:checked="false"/>
                     </RelativeLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="#F0F0F0"
-                        android:layout_marginVertical="10dp"/>
+                        android:layout_marginVertical="12dp"/>
 
-                    <!-- Notifications Option -->
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingVertical="10dp">
+                        android:layout_height="wrap_content">
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@id/switchNotifications"
                             android:layout_centerVertical="true">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Notifications"
+                                android:text="Notifikasi PUSH"
                                 android:textColor="#1F3E73"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:fontFamily="@font/poppins_bold"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Aktifkan notifikasi kependudukan"
-                                android:textColor="#7F8C8D"
+                                android:text="Aktifkan pemberitahuan info kependudukan"
+                                android:textColor="#627D98"
                                 android:textSize="12sp"
                                 android:fontFamily="@font/poppins_regular"/>
                         </LinearLayout>
@@ -144,8 +158,164 @@
                             android:checked="true"/>
                     </RelativeLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#F0F0F0"
+                        android:layout_marginVertical="12dp"/>
+
+                    <RelativeLayout
+                        android:id="@+id/btnChangePassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ubah Password"
+                                android:textColor="#1F3E73"
+                                android:textSize="13sp"
+                                android:fontFamily="@font/poppins_bold"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ganti kata sandi akun Anda berkala"
+                                android:textColor="#627D98"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/poppins_regular"/>
+                        </LinearLayout>
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@android:drawable/ic_media_play"
+                            app:tint="#627D98"/>
+                    </RelativeLayout>
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Umum"
+                android:textColor="#1F3E73"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginBottom="10dp"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#EAEFF5"
+                android:backgroundTint="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <RelativeLayout
+                        android:id="@+id/btnLanguage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Bahasa / Language"
+                                android:textColor="#1F3E73"
+                                android:textSize="13sp"
+                                android:fontFamily="@font/poppins_bold"/>
+                            <!-- Menambahkan ID untuk teks bahasa di bawah ini -->
+                            <TextView
+                                android:id="@+id/txtCurrentLanguage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Bahasa Indonesia"
+                                android:textColor="#627D98"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/poppins_regular"/>
+                        </LinearLayout>
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@android:drawable/ic_media_play"
+                            app:tint="#627D98"/>
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#F0F0F0"
+                        android:layout_marginVertical="12dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Versi Aplikasi"
+                                android:textColor="#1F3E73"
+                                android:textSize="13sp"
+                                android:fontFamily="@font/poppins_bold"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="NusaData v1.0.4-stable"
+                                android:textColor="#627D98"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/poppins_regular"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Keluar dari Akun"
+                android:textSize="13sp"
+                android:textColor="#E74C3C"
+                android:fontFamily="@font/poppins_bold"
+                app:cornerRadius="12dp"
+                android:backgroundTint="#FDF2F2"
+                app:strokeColor="#FADBD8"
+                app:strokeWidth="1dp"
+                android:textAllCaps="false"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
